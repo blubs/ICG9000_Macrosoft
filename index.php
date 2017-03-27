@@ -11,5 +11,10 @@
 
 		</select>
 		<button type="button">Generate Informtion Cards</button>
+		<form action='alter_table.php' method='post' enctype='multipart/form-data'>
+			<input name='prof_name' placeholder='Name' type='text'>
+			<input name='office_hours' placeholder='Office Hours' type='text'>
+			<input type='submit' value='submit office hours'>
+		</form>
 	</body>
 </html>

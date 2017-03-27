@@ -14,7 +14,7 @@
 				}else if($line == 6){
 
 					for($i = 0; $i < sizeof($data); $i++){
-						array_push($headers, trim(str_replace(')', '_', str_replace('(', '_', str_replace('#', 'number', str_replace(' ', '_', $data[$i]))))));
+						array_push($headers, trim($data[$i]));
 					}
 
 					include_once('db.php');
@@ -24,23 +24,23 @@
 						exit();
 					}
 					if(mysqli_query($con, 'DROP TABLE IF EXISTS csc')){
-//						echo "Table deleted";
+						echo "Table deleted";
 					}else{
 						echo "Error removing table: " . mysqli_error($con) . '<br/>';
 					}
 					$query = createTable($headers, 50);
-//					echo '<br>'.$query.'<br/>';
+						echo '<br>'.$query.'<br/>';
 					if(mysqli_query($con, $query)){
-//						echo "Table created";
+						echo "Table created";
 					}else{
 						echo "Error creating table: " . mysqli_error($con) . '<br/>';
 						}
 				}else if($line > 6){
 					if(intval($data[0])!=0){
 						$query = createQuery($headers, $data);	
-//						echo '<br/>' . $query . '<br/>';
+						echo '<br/>' . $query . '<br/>';
 						if (mysqli_query($con, $query)) {
-//					    echo "New record created successfully";
+					    echo "New record created successfully";
 						} else {
 		   				 echo "Error: " . mysqli_error($con) . '<br/>';
 							 echo "<br/> headers: " . sizeof($headers);
