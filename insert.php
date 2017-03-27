@@ -1,4 +1,10 @@
 <?php
+	include_once('db.php');
+	$con = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+	if(!$con){
+		die("Connection Failed: " . mysqli_connect_error());
+		exit();
+	}
 	if(isset($_POST['submit'])){
 		$fname = $_FILES['csvfile']['name'];
 		$chk_ext = explode('.', $fname);
@@ -14,26 +20,25 @@
 				}else if($line == 6){
 
 					for($i = 0; $i < sizeof($data); $i++){
-						array_push($headers, trim($data[$i]));
+						array_push($headers, trim(str_replace(')', '_', str_replace('(', '_', str_replace('#', 'NUMBER', str_replace(' ', '_', $data[$i]))))));
 					}
 
-					include_once('db.php');
-					$con = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-					if(!$con){
-						die("Connection Failed: " . mysqli_connect_error());
-						exit();
-					}
 					if(mysqli_query($con, 'DROP TABLE IF EXISTS csc')){
-						echo "Table deleted";
+						echo "<br/> Table deleted <br/>";
 					}else{
-						echo "Error removing table: " . mysqli_error($con) . '<br/>';
+						echo "<br/> Error removing table: " . mysqli_error($con) . '<br/>';
+					}
+					if(mysqli_query($con, 'DELETE FROM professors')){
+						echo '<br/> Professors table deleted <br/>';
+					}else{
+						echo '<br/> Error removing table professors: ' . mysqli_error($con) . '<br/>';
 					}
 					$query = createTable($headers, 50);
 						echo '<br>'.$query.'<br/>';
 					if(mysqli_query($con, $query)){
-						echo "Table created";
+						echo "<br/> Table created <br/>";
 					}else{
-						echo "Error creating table: " . mysqli_error($con) . '<br/>';
+						echo "<br/> Error creating table: " . mysqli_error($con) . '<br/>';
 						}
 				}else if($line > 6){
 					if(intval($data[0])!=0){
@@ -59,12 +64,9 @@
 	function createTable($array, $varchar){
 		$query = "CREATE TABLE csc (";
 		foreach($array as $key=>$value){
-			$query .= $value . ' VARCHAR(' . $varchar . ')';	
-			if($key != sizeof($array)-1){
-				$query .= ', ';
-			}
+			$query .= $value . ' VARCHAR(' . $varchar . '), ';	
 		}
-		$query .= ")";
+		$query .= "FOREIGN KEY (Faculty) REFERENCES professors(Faculty))";
 		return $query;
 	}
 	function createQuery($array, $data){
@@ -73,6 +75,9 @@
 			$query .= $value ;	
 			if($key != sizeof($array)-1){
 				$query .= ', ';
+			}
+			if($value == 'Faculty'){
+				insertProfessorNameIntoSeparateTable($data[$key]);
 			}
 		}
 		$query .= ') VALUES (';	
@@ -88,5 +93,14 @@
 		}
 		$query .= ')'; 
 		return $query;
+	}
+	function insertProfessorNameIntoSeparateTable($name){
+		global $con;
+		$query = "INSERT INTO professors (Faculty, office_hours) VALUES ('".$name."', '')";	
+		if(mysqli_query($con, $query)){
+			echo "<br/> Professor table updated <br/>";
+		}else{
+			echo "<br/> Error updating Professor table: " . mysqli_error($con) . '<br/>';
+		}
 	}
 ?>

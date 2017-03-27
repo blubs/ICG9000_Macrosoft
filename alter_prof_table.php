@@ -7,7 +7,7 @@
 			exit();
 		}
 		
-		$query = "INSERT INTO professors (name, office_hours) ";
+		$query = "INSERT INTO professors (Faculty, office_hours) ";
 		$query .= "VALUES ('".$_POST['prof_name']."', '";
 		$query .= $_POST['office_hours']."')";
 		echo '<br/>'.$query.'<br/>';
