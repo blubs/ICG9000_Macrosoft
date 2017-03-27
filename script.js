@@ -9,15 +9,8 @@ $(document).ready(function(){
 			console.log("SUCCESS");
 			console.log("data.result: " + JSON.stringify(data.result));	
 			$.each(data.result, function(i, data){	
-				$('#list').append('<option>'+data); 			
+				$('#list').append('<option>'+data+'</option>'); 			
 			});
-			/* $.each(data, function (i, item) { */
-			/* 	$('#list').append($('<option>', { */ 
-			/* 		value: item.valu, */
-			/* 		text : item.text */ 
-				
-			/* 	})); */
-			/* }); */
 		},
 		error: function(data){
 			console.log("ERROR");
