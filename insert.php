@@ -28,11 +28,6 @@
 					}else{
 						echo "<br/> Error removing table: " . mysqli_error($con) . '<br/>';
 					}
-					/* if(mysqli_query($con, 'DELETE FROM professors')){ */
-					/* 	echo '<br/> Professors table deleted <br/>'; */
-					/* }else{ */
-					/* 	echo '<br/> Error removing table professors: ' . mysqli_error($con) . '<br/>'; */
-					/* } */
 					$query = createTable($headers, 50);
 						echo '<br>'.$query.'<br/>';
 					if(mysqli_query($con, $query)){
