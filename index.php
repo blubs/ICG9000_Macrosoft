@@ -3,6 +3,7 @@
 		<title>ICG</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="script.js" type="text/javascript"></script>
+		<link rel='stylesheet'type='text/css' href='styles.css'>
 	</head>
 	<body>
 		<form action='insert.php' method='post' enctype='multipart/form-data'>
