@@ -27,10 +27,12 @@ $(document).ready(function(){
 		getList((page-1)*limit, limit);
 	});
 	function getList(offset, limit){	
+		var fac = $('#list').find(':selected').text();
+		console.log('fac: ' + fac);
 		$.ajax({
 			url: generateCardsFile,
 			dataType: 'json',
-			data: {offset: offset, limit: limit},
+			data: {offset: offset, limit: limit, Faculty: $('#list').find(':selected').text()},
 			type: 'POST',
 			success: function(data){
 				console.log("GENERATE");

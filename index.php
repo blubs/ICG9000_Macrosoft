@@ -13,7 +13,7 @@
 		<button name='generate' id='generate' type="button">Generate Informtion Cards</button>
 		<form action='alter_prof_table.php' method='post' enctype='multipart/form-data'>
 			<select name='list' id='list'>
-
+				<option selected>All</option>
 			</select>
 			<input name='office_hours' placeholder='Office Hours' type='text'>
 			<input type='submit' value='submit office hours'>
