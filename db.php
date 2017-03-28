@@ -1,4 +1,5 @@
 <?php
+	/* The connetion information to the mysql server */
 	define('DB_HOST', 'localhost');
 	define('DB_USER', 'root');
 	define('DB_PASSWORD', 'admin');
