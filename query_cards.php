@@ -1,5 +1,8 @@
 <?php
+	header('Content-type: text/javascript');
 	include_once("db.php");
+	/* $input = json_decode(file_get_contents('php://input')); */
+	/* echo 'offset: ' . $_POST[offset]; */
 
 	$con = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 	if(!$con){
@@ -7,11 +10,9 @@
 		exit();
 	}
 
-	header('Content-type: text/javascript');
-	
 	$json = [];
 
-	$query = "SELECT Class_NUMBER, Course, Sec, Course_Title FROM csc LIMIT 10";
+	$query = "SELECT Class_NUMBER, Course, Sec, Course_Title FROM csc LIMIT $_POST[offset], $_POST[limit]";
 	$result = mysqli_query($con, $query);	
 	if(!$result){
 		die('Could not query: ' . mysqli_error());

@@ -1,4 +1,6 @@
 $(document).ready(function(){
+	var page = 1;
+	var limit = 10;
 	var queryFile = 'query_professors.php';
 	var generateCardsFile = 'query_cards.php';
 	console.log("Is this working");
@@ -18,12 +20,22 @@ $(document).ready(function(){
 		}
 	});
 	$('#generate').on('click', function(e){
+		getList(0, limit);
+	});
+	$('#next-page').on('click', function(e){
+		page++;
+		getList((page-1)*limit, limit);
+	});
+	function getList(offset, limit){	
 		$.ajax({
 			url: generateCardsFile,
 			dataType: 'json',
-			type: 'get',
+			data: {offset: offset, limit: limit},
+			type: 'POST',
 			success: function(data){
 				console.log("GENERATE");
+				console.log("data: " + JSON.stringify(data));
+				$('#result tr').remove();
 				$('#result').append('<tr><th>Class_NUMBER</th><th>Course</th><th>Sec</th><th>Course Title</th></tr>');
 				/* console.log("Data: " + JSON.stringify(data)); */
 				$.each(data, function(i, dataRow){
@@ -39,7 +51,8 @@ $(document).ready(function(){
 			},
 			error: function(data){
 				console.log("Cannot Generate");
+				console.log("data: " + JSON.stringify(data));
 			}
 		});
-	});
+	}
 });

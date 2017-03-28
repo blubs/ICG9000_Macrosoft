@@ -18,6 +18,7 @@
 			<input name='office_hours' placeholder='Office Hours' type='text'>
 			<input type='submit' value='submit office hours'>
 		</form>
+		<button name='next-page' id='next-page' type='button'>Next-Page</button>
 		<table id='result' name='result'>
 
 		</table>
