@@ -46,7 +46,7 @@ $(document).ready(function(){
 			url: generateCardsFile,
 			dataType: 'json',
 			/* I make the data JSON object here, might want to change this */
-			data: {offset: offset, limit: limit, Faculty: $('#list').find(':selected').text()},
+			data: {offset: offset, limit: $('#limit').find(':selected').text(), Faculty: $('#list').find(':selected').text()},
 			type: 'POST',
 			success: function(data){
 				/* Tests */

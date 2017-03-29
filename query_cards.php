@@ -22,9 +22,17 @@
 	
 	/* Checks if User wants to see all classes or only for  certain professor */
 	if($_POST[Faculty] != 'All'){		
-		$query = "SELECT Class_NUMBER, Course, Sec, Course_Title FROM csc WHERE Faculty='$_POST[Faculty]'";
+		if($_POST[limit] == 'All'){
+			$query = "SELECT Class_NUMBER, Course, Sec, Course_Title FROM csc WHERE Faculty='$_POST[Faculty]'";
+		}else{
+			$query = "SELECT Class_NUMBER, Course, Sec, Course_Title FROM csc WHERE Faculty='$_POST[Faculty]' LIMIT $_POST[offset], $_POST[limit]";
+		}
 	}else{
-		$query = "SELECT Class_NUMBER, Course, Sec, Course_Title FROM csc LIMIT $_POST[offset], $_POST[limit]";
+		if($_POST[limit] == 'All'){
+			$query = "SELECT Class_NUMBER, Course, Sec, Course_Title FROM csc";
+		}else{
+			$query = "SELECT Class_NUMBER, Course, Sec, Course_Title FROM csc LIMIT $_POST[offset], $_POST[limit]";
+		}
 	}
 
 	/* Variable contains all the rows that the query returns */

@@ -22,6 +22,13 @@
 			<input name='office_hours' placeholder='Office Hours' type='text'>
 			<input type='submit' value='submit office hours'>
 		</form>
+		<!-- Change limit -->
+		<select name='limit' id='limit'>
+			<option selected>10</option>
+			<option >25</option>
+			<option >50</option>
+			<option >All</option>
+		</select>
 		<!-- A simple next-page button that will call to retreive data from the mysql server again, but change the offset and limit-->
 		<button name='next-page' id='next-page' type='button'>Next-Page</button>
 		<!-- The table that is filled with the class data -->
