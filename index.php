@@ -6,7 +6,13 @@
 		<link rel='stylesheet'type='text/css' href='styles.css'>
 	</head>
 	<body>
-	<!-- The form to insert a csv file to the mysql server-->
+		<!-- Login in form -->
+		<form action='login.php' method='post' enctype='multipart/form-data'>
+			Username:<input name='username' id='username'><br/>
+			Password:<input name='password' id='password'><br/>
+			<input type='submit' value='login'>
+		</form>
+		<!-- The form to insert a csv file to the mysql server-->
 		<form action='insert.php' method='post' enctype='multipart/form-data'>
 			<input name='csvfile' type="file" value"FILE">
 			<input type="submit" value="submit" name='submit'>
