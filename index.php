@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>ICG</title>
-		<script src="jquery-3.2.0.min.js"></script>
+		<script type='text/javascript' src="jquery-3.2.0.min.js"></script>
 		<script src="script.js" type="text/javascript"></script>
 		<link rel='stylesheet'type='text/css' href='styles.css'>
 	</head>

@@ -1,8 +1,8 @@
 <?php
 	/* The connetion information to the mysql server */
-	define('DB_HOST', 'athena');
-	define('DB_USER', 'macrosoft_user');
-	define('DB_PASSWORD', 'macrosoft_db');
-	define('DB_NAME', 'macrosoft');
+	define('DB_HOST', 'localhost');
+	define('DB_USER', 'root');
+	define('DB_PASSWORD', 'admin');
+	define('DB_NAME', 'school');
 
 ?>
