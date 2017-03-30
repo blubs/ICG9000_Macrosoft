@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <html>
 	<head>
 		<title>ICG</title>
@@ -6,6 +9,16 @@
 		<link rel='stylesheet'type='text/css' href='styles.css'>
 	</head>
 	<body>
+		<!-- show logged in user-->
+		<h1>Logged in as: 
+			<?php
+				echo $_SESSION['username'];
+			?>
+			and id as: 
+			<?php
+				echo $_SESSION['id'];
+			?>
+		</h1>
 		<!-- Login in form -->
 		<form action='login.php' method='post' enctype='multipart/form-data'>
 			Username:<input name='username' id='username'><br/>
