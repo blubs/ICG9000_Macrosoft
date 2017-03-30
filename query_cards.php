@@ -22,21 +22,57 @@
 	
 	/* Checks if User wants to see all classes or only for  certain professor */
 	if($_POST[Faculty] != 'All'){		
+
+		/* Checks if limit has been selected as All */
 		if($_POST[limit] == 'All'){
-			$query = "SELECT Class_NUMBER, Course, Sec, Course_Title FROM csc WHERE Faculty='$_POST[Faculty]'";
+			/* Limit is set to All */
+			$query = "SELECT Class_NUMBER, Course, Sec, Course_Title FROM csc WHERE Faculty=?";
+			/* Creates prepare statment */
+			$stmt = mysqli_prepare($con, $query);
+			if(!$stmt){
+				die("Prepare statment failed");
+			}
+
+			mysqli_stmt_bind_param($stmt, 's', $_POST[Faculty]);
 		}else{
-			$query = "SELECT Class_NUMBER, Course, Sec, Course_Title FROM csc WHERE Faculty='$_POST[Faculty]' LIMIT $_POST[offset], $_POST[limit]";
+			/* Limit is not set to All */
+			$query = "SELECT Class_NUMBER, Course, Sec, Course_Title FROM csc WHERE Faculty=? LIMIT ?, ?";
+			/* Creates prepare statment */
+			$stmt = mysqli_prepare($con, $query);
+			if(!$stmt){
+				die("Prepare statment failed");
+			}
+			mysqli_stmt_bind_param($stmt, 'sss', $_POST[Faculty], $_POST[offset], $_POST[limit]);
 		}
 	}else{
+		/* Faculty was not set to All */
+		/* Checks if limit is equal to All */
 		if($_POST[limit] == 'All'){
+			/* Limit is set to All */
 			$query = "SELECT Class_NUMBER, Course, Sec, Course_Title FROM csc";
+			/* Creates prepare statment */
+			$stmt = mysqli_prepare($con, $query);
+			if(!$stmt){
+				die("Prepare statment failed");
+			}
+			mysqli_stmt_bind_param($stmt, '');
 		}else{
+			/* Limit was not set to All */
 			$query = "SELECT Class_NUMBER, Course, Sec, Course_Title FROM csc LIMIT $_POST[offset], $_POST[limit]";
+			/* Creates prepare statment */
+			$stmt = mysqli_prepare($con, $query);
+			if(!$stmt){
+				die("Prepare statment failed");
+			}
+			mysqli_stmt_bind_param($stmt, 'ss', $_POST[offset], $_POST[limit]);
 		}
 	}
+	/* Executes the prepared query */
+	mysqli_stmt_execute($stmt);
 
 	/* Variable contains all the rows that the query returns */
-	$result = mysqli_query($con, $query);	
+	$result = mysqli_stmt_get_result($stmt);	
+
 	/* Checks if result actually contians something */
 	if(!$result){
 		die('Could not query: ' . mysqli_error());
