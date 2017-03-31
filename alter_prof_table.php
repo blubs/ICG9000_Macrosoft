@@ -1,6 +1,6 @@
 <?php
 	/* Test if the list has a selected option and if office_hours isn't blank */
-	if(isset($_POST['list'], $_POST['office_hours'])){
+	if(isset($_POST['list']) && !empty($_POST['list']) && $_POST['list'] != 'All'){
 		/* include the connection information to the mysql server */
 		include_once('db.php');
 		
@@ -10,16 +10,26 @@
 			die("Connection Failed: " . mysqli_connect_error());
 			exit();
 		}
-		
-		/* The query which will update the office hours only of the professor selected in the list */
-		$query = "UPDATE professors SET office_hours='".$_POST['office_hours']."' WHERE Faculty='".$_POST['list']."'";
-		echo '<br/>'.$query.'<br/>';
 
-		/* Test if query went through the connection */
-		if(mysqli_query($con, $query)){
-			echo 'Successfully added office hours';
-		}else{
-			echo 'Error adding office hours: ' . mysqli_error($con).'<br/>';
+		$Faculty = mysqli_real_escape_string($con, $_POST['list']);
+
+		/* Goes through each input of the forum and updates the field one at at time */
+		foreach($_POST as $key=>$value){
+			if($key != 'list'){
+				if(empty($value)){
+					continue;
+				}
+				$col = mysqli_real_escape_string($con, $key);
+				$query = "UPDATE professors SET ".$col."=? WHERE Faculty=?";
+				echo '<br/>'.$query.'<br/>';
+				$stmt = mysqli_prepare($con, $query);
+				if(!$stmt){
+					die('Prepare statment failed'.mysqli_error($con));
+				}
+				mysqli_stmt_bind_param($stmt, 'ss', $value, $Faculty);
+				mysqli_execute($stmt);
+				mysqli_stmt_close($stmt);
+			}
 		}
 	}
 ?>

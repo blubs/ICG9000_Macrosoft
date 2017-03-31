@@ -39,6 +39,9 @@
 				<option selected>All</option>
 			</select>
 			<input name='office_hours' placeholder='Office Hours' type='text'>
+			<input name='phone' placeholder='phone' type='text'>
+			<input name='email' placeholder='email' type='text'>
+			<input name='room' placeholder='room' type='text'>
 			<input type='submit' value='submit office hours'>
 		</form>
 		<!-- Change limit -->
