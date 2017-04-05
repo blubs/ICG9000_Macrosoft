@@ -1,3 +1,46 @@
+* {
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+input {
+	border: 1px solid blue;
+}
+div {
+	/* display: inline-block; */
+	border: 2px solid black;
+	padding: 10px;
+}
+.cardTitle {
+	margin: auto;
+	text-align: center;
+	/* border: 1px solid black; */
+}
+#generate {
+	margin: auto;
+	width: 45%;
+	text-align: center;
+}
+#login > form{
+	right: 0;
+	/* height: 50px; */
+}
+#logout {
+	float:right;
+}
+#Office {
+	display: inline-block; 
+	float: left;
+	width: 40%;
+	padding: 0 40px;
+	text-align: left;
+}
+#Email {
+	display: inline-block;
+	float: right;
+	width: 40%;
+	text-align: left;
+}
 table {
 	font-family: arial, sans-serif;
 	border-collapse: collapse;
@@ -5,7 +48,7 @@ table {
 }
 td, th {
 	border: 1px solid #dddddd;
-	text-align: left;
+	text-align: center;
 	padding: 8px;
 }
 tr:nth-child(even) {

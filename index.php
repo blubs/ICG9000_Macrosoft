@@ -1,61 +1,65 @@
 <?php
+require 'db.php';
 	session_start();
+	if($_SERVER['REQUEST_METHOD'] == 'POST'){
+		if(isset($_POST['login'])){
+			require 'login.php';
+		}elseif(isset($_POST['upload'])){
+			require 'insert.php';
+		}elseif(isset($_POST['logout'])){
+			header('location: logout.php');
+		}elseif(isset($_POST['edit'])){
+			header('location: edit.php');
+		}
+
+	}
 ?>
+<!DOCTYPE html>
 <html>
 	<head>
-		<title>ICG</title>
-		<script type='text/javascript' src="jquery-3.2.0.min.js"></script>
-		<script src="script.js" type="text/javascript"></script>
+		<title>Card Generator</title>
 		<link rel='stylesheet'type='text/css' href='styles.css'>
 	</head>
 	<body>
-		<!-- show logged in user-->
-		<h1>Logged in as: 
+		<div id='login'>
+			<form action='index.php' method='post'>
 			<?php
-				echo $_SESSION['username'];
+				if(isset($_SESSION['username'])){
+					echo "Welcome: ".$_SESSION['username'];		
+				}else{
+					echo "		
+							<label>Username:</label>
+							<input name='username' type='text'>
+							<label>Password:</label>
+							<input name='password' type='password'>
+							<button name='login'>Login</button>
+						";
+				}
 			?>
-			and id as: 
-			<?php
-				echo $_SESSION['id'];
-			?>
-		</h1>
-		<!-- Login in form -->
-		<form action='login.php' method='post' enctype='multipart/form-data'>
-			Username:<input name='username' id='username'><br/>
-			Password:<input name='password' id='password'><br/>
-			<input type='submit' value='login'>
-		</form>
-		<!-- The form to insert a csv file to the mysql server-->
-		<form action='insert.php' method='post' enctype='multipart/form-data'>
-			<input name='csvfile' type="file" value"FILE">
-			<input type="submit" value="submit" name='submit'>
-		</form>
-		<!-- Button that calls to retreive data from mysql server and put it into the table at the end of this file-->
-		<button name='generate' id='generate' type="button">Generate Informtion Cards</button>
-		<!-- The form to edit the office hours of a professor selected-->
-		<form action='alter_prof_table.php' method='post' enctype='multipart/form-data'>
-		<!-- Holds all the professor's names-->
-			<select name='list' id='list'>
-				<option selected>All</option>
-			</select>
-			<input name='office_hours' placeholder='Office Hours' type='text'>
-			<input name='phone' placeholder='phone' type='text'>
-			<input name='email' placeholder='email' type='text'>
-			<input name='room' placeholder='room' type='text'>
-			<input type='submit' value='submit office hours'>
-		</form>
-		<!-- Change limit -->
-		<select name='limit' id='limit'>
-			<option selected>10</option>
-			<option >25</option>
-			<option >50</option>
-			<option >All</option>
-		</select>
-		<!-- A simple next-page button that will call to retreive data from the mysql server again, but change the offset and limit-->
-		<button name='next-page' id='next-page' type='button'>Next-Page</button>
-		<!-- The table that is filled with the class data -->
-		<table id='result' name='result'>
+				<button id='edit' name='edit'>Edit</button> 
+				<button id='logout' name='logout'>Logout</button> 
+			</form>
+		</div>
+		<div id='generate'>
+			<form action='generate.php' method='post'>
+				<select name='Faculty'>
+<?php
+	$result = $con->query("SELECT Faculty FROM professors");
 
-		</table>
+	while($row = $result->fetch_assoc()){
+		echo "<option>". $row['Faculty']."</option>";
+	}
+	echo "</select>";
+?>
+				</select><br/>
+				<button name='generate'>Generate Cards</button>
+			</form>
+		</div>
+		<div id='uploadForm'>
+			<form action='index.php' method='post' enctype='multipart/form-data'>
+			<input name='csvfile' type="file" value"FILE">
+			<button name='upload'>UPLOAD</button>
+		</form>
+		</div>
 	</body>
 </html>
