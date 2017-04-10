@@ -1,6 +1,9 @@
 <?php
 	require 'db.php';
 	session_start();
+	if(!isset($_SESSION['username'])){
+		header('location: index.php');
+	}
 	if(isset($_POST['update'], $_POST['Faculty'])){
 		$Faculty = $con->escape_string($_POST['Faculty']);
 		foreach($_POST as $key=>$value){
@@ -19,8 +22,10 @@
 <html>
 	<head>
 		<title>Edit</title>
+		<link rel='stylesheet'type='text/css' href='styles.css'>
 	</head>
 	<body>	
+		<?php include_once('menu-bar.php'); ?>
 		<div id='generate'>
 			<form action='edit.php' method='post'>
 				<select name='Faculty'>

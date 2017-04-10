@@ -1,9 +1,12 @@
 <?php
-	$fname = $_FILES['csvfile']['name'];
+	require 'db.php';
+	session_start();
+	
+	$fname = $_FILES['file']['name'];
 	$chk_ext = explode('.', $fname);
 	
 	if(strtolower(end($chk_ext)) == 'csv'){
-		$filename = $_FILES['csvfile']['tmp_name'];
+		$filename = $_FILES['file']['tmp_name'];
 		$handle = fopen($filename, 'r');
 		$headers = [];
 
@@ -13,10 +16,6 @@
 			}elseif($line == 6){
 				foreach($data as $key=>$value){
 					$insert = $con->escape_string($value);
-					$insert = str_replace(' ', '_', $insert);
-					$insert = str_replace('#', 'NUMBER', $insert);
-					$insert = str_replace('(', '_', $insert);
-					$insert = str_replace(')', '_', $insert);
 					array_push($headers, $insert);
 				}	
 				deleteTable('csc');
@@ -33,17 +32,16 @@ function createTable($headers, $varchar){
 	global $con;
 	$query = "CREATE TABLE csc (";
 	foreach($headers as $key=>$value){
-		$query .= $value . ' VARCHAR(' . $varchar . '), ';	
+		$query .= '`'.$value.'` VARCHAR(' . $varchar . '), ';	
 	}
 	$query .= "FOREIGN KEY (Faculty) REFERENCES professors(Faculty))";
-	
 	$con->query($query) or die("Query failed: ".$con->error());
 }
 function insertIntoTable($headers, $data){
 	global $con;
 	$query = "INSERT INTO csc (";	
 	foreach($headers as $key=>$value){
-		$query .= $value . ', ';	
+		$query .= '`'.$value.'`, ';	
 		if($value == 'Faculty'){
 			professor($data[$key]);
 		}
@@ -67,6 +65,6 @@ function professor($name){
 function deleteTable($table){
 	global $con;
 	$query = "DROP TABLE IF EXISTS ".$table;
-	$con->query($query) or die("Dropping Table Faield: ". $con->error());
+	$con->query($query);
 }
 ?>

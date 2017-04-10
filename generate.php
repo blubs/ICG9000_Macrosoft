@@ -26,7 +26,7 @@
 			</tr>
 			<?php
 				$Faculty = $_POST['Faculty'];
-				$query = "SELECT Course, Sec, Days, Start_Time, End_Time, Room FROM csc WHERE Faculty='$Faculty'";
+				$query = "SELECT Course, Sec, Days, `Start Time`, `End Time`, Room FROM csc WHERE Faculty='$Faculty'";
 				$result = $con->query($query) or die("Query failed: ". $con->error);
 				while($row = $result->fetch_assoc()){
 					echo 
@@ -34,7 +34,7 @@
 							"<td>".$row['Course']."</td>".
 							"<td>".$row['Sec']."</td>".
 							"<td>".$row['Days']."</td>".
-							"<td>".$row['Start_Time']."-".$row['End_Time']."</td>".
+							"<td>".$row['Start Time']."-".$row['End Time']."</td>".
 							"<td>".$row['Room']."</td>".
 						"</tr>";
 				}

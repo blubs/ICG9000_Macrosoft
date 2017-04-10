@@ -12,7 +12,7 @@ else {
 	if(password_verify($_POST['password'], $user['password'])){
 		$_SESSION['username'] = $user['username'];
 		$_SESSION['logged_in'] = true;
-		header("location: edit.php");
+		header("location: main_menu.php");
 	}
 }
 ?>
