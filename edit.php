@@ -26,18 +26,17 @@
 	</head>
 	<body>	
 		<?php include_once('menu-bar.php'); ?>
+		<ul class='side-menu-container'>
+			<?php 
+				$result = $con->query("SELECT Faculty FROM professors");	
+
+				while($row = $result->fetch_assoc()){
+					echo "<li class='side-menu-item'>".$row['Faculty']."</li>";
+				}
+			?>
+		</ul>
 		<div id='generate'>
 			<form action='edit.php' method='post'>
-				<select name='Faculty'>
-					<?php
-						$result = $con->query("SELECT Faculty FROM professors");
-						
-						while($row = $result->fetch_assoc()){
-							echo "<option>".$row['Faculty']."</option>";
-						}
-						echo "</select>";
-					?>
-				</select><br/>
 				<input name='office_hours' placeholder='Office Hours'>
 				<input name='phone' placeholder='Phone'>
 				<input name='email' placeholder='Email'>

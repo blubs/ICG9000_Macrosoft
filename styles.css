@@ -75,14 +75,14 @@ td, th {
 tr:nth-child(even) {
 	background-color: #dddddd;
 }
-ul {
+ul.menu-bar {
   list-style-type: none;
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
 	background-color: #38c93f;
 }
-li {
+li.menu-bar-item {
 	float: left;
 }
 li a{
@@ -97,4 +97,15 @@ li a:hover:not(.active) {
 }
 .active {
 	background-color: #3fff00;
+}
+.side-menu-container {
+  list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: auto;
+	background-color: #999;
+	width: 330px;
+	height: 546px;
+	display: inline-block;
+	float: left;
 }
