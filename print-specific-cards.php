@@ -17,9 +17,16 @@ session_start();
 			<ul class='pickit-list' id='unpicked'>
 				<?php
 					$result = $con->query("SELECT Faculty FROM professors");	
-
 					while($row = $result->fetch_assoc()){
-						echo "<li class='pickit-list-item'>".$row['Faculty']."</li>";
+						$query = "SELECT Faculty FROM professors WHERE Faculty='".$row['Faculty']."' AND ((office_hours is NULL OR room is NULL) OR (phone is NULL AND email is NULL))";
+						/* printf($query); */
+						$missing = $con->query($query);
+						$pink = $missing->num_rows;
+						if($pink > 0){
+							echo "<li class='pickit-list-item missing-info'>".$row['Faculty']."</li>";
+						}else{
+							echo "<li class='pickit-list-item'>".$row['Faculty']."</li>";
+						}
 					}
 				?>
 			</ul>
@@ -31,7 +38,7 @@ session_start();
 				<button class='pickit-list-button' id='print'>Print</button>
 			</div>
 			<ul class='pickit-list' id='picked'>
-				<li>Heyy</li>
+
 			</ul>
 		</div>
 	</body>

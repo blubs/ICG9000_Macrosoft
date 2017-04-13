@@ -161,3 +161,6 @@ li a:hover:not(.active) {
 	text-align: center;
 	margin: auto;
 }
+.missing-info {
+	background-color: pink !important;
+}

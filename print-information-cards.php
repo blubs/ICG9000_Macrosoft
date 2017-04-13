@@ -4,7 +4,7 @@
 
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		if(isset($_POST['all'])){
-			$query = "SELECT Faculty FROM professors WHERE (office_hours is NULL OR room is NULL) AND (phone is NULL OR email is NULL)";
+			$query = "SELECT Faculty FROM professors WHERE (office_hours is NULL OR room is NULL) OR (phone is NULL AND email is NULL)";
 			$result = $con->query($query);
 			$rows = $result->num_rows;
 			if($rows > 0){
