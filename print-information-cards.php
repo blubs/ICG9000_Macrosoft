@@ -28,7 +28,7 @@
 			<form action='print-information-cards.php' method='post'>
 				<input type='submit' name='all' value='Print All Professors'>
 			</form>
-			<form action='print-information-cards.php'>
+			<form action='print-specific-cards.php'>
 				<input type='submit' name='specific' value='Specific Professors'>
 			</form>
 		</div>

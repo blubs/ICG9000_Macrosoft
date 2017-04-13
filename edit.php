@@ -23,6 +23,8 @@
 	<head>
 		<title>Edit</title>
 		<link rel='stylesheet'type='text/css' href='styles.css'>
+		<script src="jquery-3.2.0.min.js"></script>	
+		<script src='script.js'></script>
 	</head>
 	<body>	
 		<?php include_once('menu-bar.php'); ?>
@@ -37,11 +39,11 @@
 		</ul>
 		<div id='generate'>
 			<form action='edit.php' method='post'>
-				<input name='office_hours' placeholder='Office Hours'>
-				<input name='phone' placeholder='Phone'>
-				<input name='email' placeholder='Email'>
-				<input name='room' placeholder='Room'>
-				<button name='update'>Update Professor</button>
+				<input id='office_hours' name='office_hours' placeholder='Office Hours'>
+				<input id='phone' name='phone' placeholder='Phone'>
+				<input id='email' name='email' placeholder='Email'>
+				<input id='room' name='room' placeholder='Room'>
+				<button id='update' name='update'>Update Professor</button>
 			</form>
 		</div>
 	</body>

@@ -1,0 +1,72 @@
+* {
+	border: none;
+	margin: 0;
+	padding: 0;
+	font-size: 30px;
+}
+.center {
+	padding: 20px;
+	width: 600px;
+	margin: 100px auto;
+	text-align: center;
+}
+.center::after{
+	content: " ";	
+	display: block;
+	height: 0;
+	clear: both;
+}
+div {
+	padding: 20px;
+	border: 1px solid black;
+}
+ul.menu-bar {
+  list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #38c93f;
+}
+li.menu-bar-item {
+	float: left;
+}
+li a{
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+li a:hover:not(.active) {
+	background-color: #3fff00;
+}
+.active {
+	background-color: #3fff00;
+}
+.pickit-list {
+	list-style-type: none;
+	overflow: auto;
+	height: 400px;
+	width: 250px;
+	display: inline-block;
+	border: 1px solid black;
+}
+.pickit-list li{
+	text-align: center;
+}
+#unpicked {
+	float: left;
+}
+#picked {
+	float: right;
+}
+#pickit-list-container {
+	margin: 30px auto;
+	width: 800px;
+}
+.pickit-list-button {
+	border: 1px solid black;
+	border-radius: 4px;
+	margin: 10px 0;
+	float: left;
+}

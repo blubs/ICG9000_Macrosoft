@@ -6,13 +6,13 @@
 		$_SESSION['message'] = "User doesn't exist";
 		header("location: error.php");
 	}
-else {
-	$user = $result->fetch_assoc();
+	else {
+		$user = $result->fetch_assoc();
 
-	if(password_verify($_POST['password'], $user['password'])){
-		$_SESSION['username'] = $user['username'];
-		$_SESSION['logged_in'] = true;
-		header("location: main_menu.php");
+		if(password_verify($_POST['password'], $user['password'])){
+			$_SESSION['username'] = $user['username'];
+			$_SESSION['logged_in'] = true;
+			header("location: main_menu.php");
+		}
 	}
-}
 ?>

@@ -19,16 +19,23 @@ div {
 	border: 1px solid black;
 }
 button {
-	margin: 10px;
-	padding: 10px;
-	border-radius: 4px;
-	width: 500px;
+	/* margin: 10px; */
+	/* padding: 10px; */
+	/* border-radius: 4px; */
+	/* width: 500px; */
+	display: block;
 }
 .center {
 	padding: 20px;
 	width: 600px;
 	margin: 100px auto;
 	text-align: center;
+}
+.center::after{
+	content: " ";	
+	display: block;
+	height: 0;
+	clear: both;
 }
 #file-upload {
 	width: 500px;
@@ -108,4 +115,49 @@ li a:hover:not(.active) {
 	height: 546px;
 	display: inline-block;
 	float: left;
+}
+.side-menu-item:hover {
+	background-color: #aaa;
+}
+.side-menu-item.selected {
+	background-color: #fff;
+}
+.pickit-list {
+	list-style-type: none;
+	overflow: auto;
+	height: 410px;
+	width: 300px;
+	display: inline-block;
+	border: 1px solid black;
+}
+.pickit-list li{
+	text-align: center;
+	background-color: lightgreen;
+}
+.pickit-list-item.selected {
+	background-color: green;
+}
+#unpicked {
+	float: left;
+}
+#picked {
+	float: right;
+}
+#pickit-list-container {
+	margin: 25px auto;
+	width: 800px;
+}
+.pickit-list-button {
+	border: 1px solid black;
+	border-radius: 4px;
+	background-color: lightgreen;
+	padding: 5px;
+	margin: 5px auto;
+}
+.pickit-list-button-container {
+	border: 1px solid black;
+	width: 154px;
+	float: left;
+	text-align: center;
+	margin: auto;
 }
