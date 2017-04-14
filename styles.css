@@ -130,12 +130,15 @@ li a:hover:not(.active) {
 	display: inline-block;
 	border: 1px solid black;
 }
-.pickit-list li{
+.pickit-list-item{
 	text-align: center;
 	background-color: lightgreen;
 }
-.pickit-list-item.selected {
-	background-color: green;
+/* .pickit-list-item.selected { */
+/* 	background-color: green; */
+/* } */
+.selected {
+	background-color: green !important;
 }
 #unpicked {
 	float: left;
@@ -162,5 +165,5 @@ li a:hover:not(.active) {
 	margin: auto;
 }
 .missing-info {
-	background-color: pink !important;
+	background-color: pink;
 }

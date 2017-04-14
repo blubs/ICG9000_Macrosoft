@@ -8,7 +8,7 @@ $(document).ready(function(){
 		});
 		
 		$('#unpicked > li').on('click', function(){
-			$('.pickit-list > li').removeClass('selected');	
+			$('#unpicked li').removeClass('selected');	
 			$(this).addClass('selected');
 		});
 		
@@ -17,7 +17,30 @@ $(document).ready(function(){
 			
 			if($('#picked :contains('+$li.text()+')').length == 0){
 				$li.removeClass('selected');	
-				$('#picked').append($li.clone());	
+				$clone = $li.clone();
+				$clone.attr('class', 'picked-list-item');
+				$('#picked').append($clone);	
 			}
+		});
+
+		
+		$('body').on('click','#picked > li', function(){
+			$('#picked li').removeClass('selected');	
+			$(this).addClass('selected');
+		});
+		
+		$('#remove').on('click', function(){
+			$('#picked .selected').remove();
+		});
+
+		$('#add_all').on('click', function(){
+			$children = $('#unpicked').children().clone();	
+			$children.removeClass();
+			$('#picked').append($children);
+		});
+
+		$('#remove_all').on('click', function(){
+			$children = $('#picked').children();
+			$children.remove();
 		});
 });
