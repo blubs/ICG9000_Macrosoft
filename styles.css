@@ -134,9 +134,6 @@ li a:hover:not(.active) {
 	text-align: center;
 	background-color: lightgreen;
 }
-/* .pickit-list-item.selected { */
-/* 	background-color: green; */
-/* } */
 .selected {
 	background-color: green !important;
 }
@@ -165,5 +162,5 @@ li a:hover:not(.active) {
 	margin: auto;
 }
 .missing-info {
-	background-color: pink;
+	background-color: red;
 }

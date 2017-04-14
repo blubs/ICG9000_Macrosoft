@@ -15,11 +15,13 @@ $(document).ready(function(){
 		$('#add').on('click', function(){
 			$li = $('#unpicked .selected');
 			
-			if($('#picked :contains('+$li.text()+')').length == 0){
-				$li.removeClass('selected');	
-				$clone = $li.clone();
-				$clone.attr('class', 'picked-list-item');
-				$('#picked').append($clone);	
+			if(!$li.hasClass('missing-info')){
+				if($('#picked :contains('+$li.text()+')').length == 0){
+					$li.removeClass('selected');	
+					$clone = $li.clone();
+					$clone.attr('class', 'pickit-list-item');
+					$('#picked').append($clone);	
+				}
 			}
 		});
 
@@ -34,13 +36,19 @@ $(document).ready(function(){
 		});
 
 		$('#add_all').on('click', function(){
-			$children = $('#unpicked').children().clone();	
-			$children.removeClass();
-			$('#picked').append($children);
+			$children = $('#unpicked').children(':not(.missing-info)').clone();	
+			$children.attr('class', 'pickit-list-item');
+			$children.each(function(){
+				if($('#picked :contains('+$(this).text()+')').length == 0){
+					console.log($(this).text());
+					$('#picked').append(this);	
+				}
+			});
 		});
 
 		$('#remove_all').on('click', function(){
 			$children = $('#picked').children();
 			$children.remove();
 		});
+
 });
