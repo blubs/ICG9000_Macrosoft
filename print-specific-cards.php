@@ -35,7 +35,10 @@ session_start();
 				<button class='pickit-list-button' id='remove'>Remove</button>
 				<button class='pickit-list-button' id='add_all'>Add All</button>
 				<button class='pickit-list-button' id='remove_all'>Remove All</button>
-				<button class='pickit-list-button' id='print'>Print</button>
+				<form action='generate.php' id='print' method='post'>
+					<input type='text' style='display: none;' name='input' id='inputData'>
+					<input type='submit' class='pickit-list-button' value='Print'>
+				</form>
 			</div>
 			<ul class='pickit-list' id='picked'>
 

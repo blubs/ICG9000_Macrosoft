@@ -164,3 +164,6 @@ li a:hover:not(.active) {
 .missing-info {
 	background-color: red;
 }
+#print > input {
+	width: 100px;
+}
