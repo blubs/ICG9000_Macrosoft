@@ -3,7 +3,16 @@
 	session_start();
 	/* $input = json_decode(file_get_contents('php://input')); */
 	/* print_r($array); */
-	$array = explode('.', $_POST['input']);	
+	$array = array();
+	if(isset($_POST['input'])){
+		$array = explode('.', $_POST['input']);	
+	}else{
+		/* array should be all the professors from the professor list */
+		$result = $con->query("SELECT Faculty FROM professors");	
+		while($row = $result->fetch_assoc()){
+			array_push($array, $row['Faculty']);
+		}
+	}
 ?>
 <html>
 	<head>
@@ -13,6 +22,9 @@
 	<body>
 		<?php
 			foreach($array as $key => $value){
+				if($value == ''){
+					continue;
+				}
 				$_POST['Faculty'] = $value;
 				echo '
 					<h2 class="cardTitle">CALIFORNIA STATE UNIVERSITY, SACRAMENTO</h2>

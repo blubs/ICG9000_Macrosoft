@@ -55,6 +55,8 @@ button {
 	background-color: green;
 	color: white;
 	width: 600px;
+	border-radius: 4px;
+	padding: 7px;
 }
 #Office {
 	display: inline-block; 

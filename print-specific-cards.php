@@ -1,6 +1,14 @@
 <?php
 require 'db.php';
 session_start();
+	
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+	if(isset($_POST['input'])){
+		if(!($_POST['input'] == '')){
+			require 'generate.php';
+		}
+	}
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,7 +27,6 @@ session_start();
 					$result = $con->query("SELECT Faculty FROM professors");	
 					while($row = $result->fetch_assoc()){
 						$query = "SELECT Faculty FROM professors WHERE Faculty='".$row['Faculty']."' AND ((office_hours is NULL OR room is NULL) OR (phone is NULL AND email is NULL))";
-						/* printf($query); */
 						$missing = $con->query($query);
 						$pink = $missing->num_rows;
 						if($pink > 0){
@@ -35,7 +42,7 @@ session_start();
 				<button class='pickit-list-button' id='remove'>Remove</button>
 				<button class='pickit-list-button' id='add_all'>Add All</button>
 				<button class='pickit-list-button' id='remove_all'>Remove All</button>
-				<form action='generate.php' id='print' method='post'>
+				<form action='' id='print' method='post'>
 					<input type='text' style='display: none;' name='input' id='inputData'>
 					<input type='submit' class='pickit-list-button' value='Print'>
 				</form>

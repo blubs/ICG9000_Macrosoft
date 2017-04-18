@@ -34,6 +34,8 @@ $(document).ready(function(){
 	});
 	
 	$('#remove').on('click', function(){
+		console.log("Remove: " + $('#picked .selected').text());
+		removeFromPrint($('#picked .selected').text());
 		$('#picked .selected').remove();
 	});
 
@@ -52,15 +54,24 @@ $(document).ready(function(){
 	$('#remove_all').on('click', function(){
 		$children = $('#picked').children();
 		$children.remove();
+		$('#inputData').val('');
 	});
 
 	function addToPrint(s){
-		if($('#inputData').val() === ''){
-			$('#inputData').val(s);
-		}else{
-			$('#inputData').val($('#inputData').val() + '.' + s);
-		}
+		/* if($('#inputData').val() === ''){ */
+		/* 	$('#inputData').val(s); */
+		/* }else{ */
+		/* 	$('#inputData').val($('#inputData').val() + '.' + s); */
+		/* } */
+		var string = $('#inputData').val();
+		string += s + '.';
+		$('#inputData').val(string);
 		console.log($('#inputData').val());
+	}
+	function removeFromPrint(s){
+		var string = $('#inputData').val();
+		string = string.replace(s + '.', '');
+		$('#inputData').val(string);
 	}
 	/* $('#pint').on('submit', function(){ */
 	/* 	console.log($('#inputData').val()); */
