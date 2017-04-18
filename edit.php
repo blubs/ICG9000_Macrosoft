@@ -30,11 +30,17 @@
 		<?php include_once('menu-bar.php'); ?>
 		<ul class='side-menu-container'>
 			<?php 
-				$result = $con->query("SELECT Faculty FROM professors");	
-
-				while($row = $result->fetch_assoc()){
-					echo "<li class='side-menu-item'>".$row['Faculty']."</li>";
-				}
+					$result = $con->query("SELECT Faculty FROM professors");	
+					while($row = $result->fetch_assoc()){
+						$query = "SELECT Faculty FROM professors WHERE Faculty='".$row['Faculty']."' AND ((office_hours is NULL OR room is NULL) OR (phone is NULL AND email is NULL))";
+						$missing = $con->query($query);
+						$pink = $missing->num_rows;
+						if($pink > 0){
+							echo "<li class='side-menu-item missing-info'>".$row['Faculty']."</li>";
+						}else{
+							echo "<li class='side-menu-item'>".$row['Faculty']."</li>";
+						}
+					}
 			?>
 		</ul>
 		<div id='generate'>
