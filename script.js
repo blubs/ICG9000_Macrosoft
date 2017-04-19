@@ -1,18 +1,6 @@
 $(document).ready(function(){
 	$('#inputData').val('');
-	$('.side-menu-container > li').on('click', function(){
-		$('.side-menu-container > li').removeClass('selected');	
-		$(this).addClass('selected');
-		$.ajax({
-			url: ''
-		});
-	});
-	
-	$('#unpicked > li').on('click', function(){
-		$('#unpicked li').removeClass('selected');	
-		$(this).addClass('selected');
-	});
-	
+
 	$('#add').on('click', function(){
 		$li = $('#unpicked .selected');
 		
@@ -28,8 +16,8 @@ $(document).ready(function(){
 	});
 
 	
-	$('body').on('click','#picked > li', function(){
-		$('#picked li').removeClass('selected');	
+	$('body').on('click','.pickit-list-item', function(){
+		$(this).parent().children().removeClass('selected');
 		$(this).addClass('selected');
 	});
 	
@@ -40,7 +28,7 @@ $(document).ready(function(){
 	});
 
 	$('#add_all').on('click', function(){
-		$children = $('#unpicked').children(':not(.missing-info)').clone();	
+		$children = $('#unpicked').children(':not(.missing-info, .pickit-list-title)').clone();	
 		$children.attr('class', 'pickit-list-item');
 		$children.each(function(){
 			if($('#picked :contains('+$(this).text()+')').length == 0){
@@ -52,17 +40,12 @@ $(document).ready(function(){
 	});
 
 	$('#remove_all').on('click', function(){
-		$children = $('#picked').children();
+		$children = $('#picked').children(':not(.pickit-list-title)');
 		$children.remove();
 		$('#inputData').val('');
 	});
 
 	function addToPrint(s){
-		/* if($('#inputData').val() === ''){ */
-		/* 	$('#inputData').val(s); */
-		/* }else{ */
-		/* 	$('#inputData').val($('#inputData').val() + '.' + s); */
-		/* } */
 		var string = $('#inputData').val();
 		string += s + '.';
 		$('#inputData').val(string);
@@ -73,29 +56,4 @@ $(document).ready(function(){
 		string = string.replace(s + '.', '');
 		$('#inputData').val(string);
 	}
-	/* $('#pint').on('submit', function(){ */
-	/* 	console.log($('#inputData').val()); */
-	/* 	}); */
-	/* $('#print').on('submit', function(){ */
-	/* 	var contents = { */
-	/* 		'Faculty': [] */
-	/* 	}; */
-	/* 	$('#picked').children().each(function(){ */
-	/* 		contents.Faculty.push($(this).text()); */
-	/* 	}); */
-	/* 	console.log(JSON.stringify(contents)); */
-	/* 	$.ajax({ */
-	/* 		url: 'generate.php', */
-	/* 		type: 'POST', */
-	/* 		data: contents, */
-	/* 		success: function(data){ */
-	/* 			console.log("SUCESSS"); */	
-	/* 			console.log(JSON.stringify(data)); */
-	/* 		}, */
-	/* 		error: function(){ */
-	/* 			console.log("ERROR"); */	
-	/* 			/1* console.log(JSON.stringify(data)); *1/ */
-	/* 		} */
-	/* 	}); */
-	/* }); */
 });

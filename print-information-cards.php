@@ -15,22 +15,23 @@
 		}
 	}
 ?>
-<!DOCTYPE html>
 <html>
 	<head>
 		<title>Print Information Cards</title>
 		<link rel='stylesheet'type='text/css' href='styles.css'>
 	</head>
 	<body>
+		<div id='container'>
 		<?php include_once('menu-bar.php');?>
-		<div class='center'>
-			<h1>Print Info Cards</h1>
+		<div id='center-container'>
+			<h1 class='main-menu-title'>Print Info Cards</h1>
 			<form action='' method='post'>
-				<input type='submit' name='all' value='Print All Professors'>
+				<input class='main-menu-item' type='submit' name='all' value='Print All Professors'>
 			</form>
 			<form action='print-specific-cards.php'>
-				<input type='submit' name='specific' value='Specific Professors'>
+				<input class='main-menu-item' type='submit' name='specific' value='Specific Professors'>
 			</form>
+		</div>
 		</div>
 	</body>
 </html>

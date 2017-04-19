@@ -18,7 +18,6 @@
 		}
 	}
 ?>
-<!DOCTYPE html>
 <html>
 	<head>
 		<title>Edit</title>
@@ -27,30 +26,34 @@
 		<script src='script.js'></script>
 	</head>
 	<body>	
-		<?php include_once('menu-bar.php'); ?>
-		<ul class='side-menu-container'>
-			<?php 
-					$result = $con->query("SELECT Faculty FROM professors");	
-					while($row = $result->fetch_assoc()){
-						$query = "SELECT Faculty FROM professors WHERE Faculty='".$row['Faculty']."' AND ((office_hours is NULL OR room is NULL) OR (phone is NULL AND email is NULL))";
-						$missing = $con->query($query);
-						$pink = $missing->num_rows;
-						if($pink > 0){
-							echo "<li class='side-menu-item missing-info'>".$row['Faculty']."</li>";
-						}else{
-							echo "<li class='side-menu-item'>".$row['Faculty']."</li>";
-						}
-					}
-			?>
-		</ul>
-		<div id='generate'>
-			<form action='edit.php' method='post'>
-				<input id='office_hours' name='office_hours' placeholder='Office Hours'>
-				<input id='phone' name='phone' placeholder='Phone'>
-				<input id='email' name='email' placeholder='Email'>
-				<input id='room' name='room' placeholder='Room'>
-				<button id='update' name='update'>Update Professor</button>
-			</form>
+		<div id='container'>
+			<div id='menu-bar'>
+				<?php require 'menu-bar.php' ?>
+			</div>
+			<div id='body-container'>
+				<div id='side-bar'>
+					<?php 
+							$result = $con->query("SELECT Faculty FROM professors");	
+							while($row = $result->fetch_assoc()){
+								$query = "SELECT Faculty FROM professors WHERE Faculty='".$row['Faculty']."' AND ((office_hours is NULL OR room is NULL) OR (phone is NULL AND email is NULL))";
+								$missing = $con->query($query);
+								$pink = $missing->num_rows;
+								if($pink > 0){
+									echo "<div class='side-bar-item missing-info'>".$row['Faculty']."</div>";
+								}else{
+									echo "<div class='side-bar-item'>".$row['Faculty']."</div>";
+								}
+							}
+					?>
+				</div>
+				<div id='input-field-container'>
+					<input class='edit-input' type='text' placeholder='Office Hours'>
+					<input class='edit-input' type='text' placeholder='Phone Number'>
+					<input class='edit-input' type='text' placeholder='Email'>
+					<input class='edit-input' type='text' placeholder='Office Room'>
+					<input class='edit-input' type='button' value='update'>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>

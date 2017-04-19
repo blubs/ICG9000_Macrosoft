@@ -1,171 +1,176 @@
-* {
-	border: none;
+*{
 	margin: 0;
 	padding: 0;
-	font-size: 30px;
-}
-input {
-	border-bottom: 2px solid gray;
-	margin: 10px;
-	padding: 10px;
-	border-radius: 4px;
-	width: 575px;
-}
-input:focus {
-	outline: none;
-}
-div {
-	padding: 20px;
-	border: 1px solid black;
-}
-button {
-	/* margin: 10px; */
-	/* padding: 10px; */
-	/* border-radius: 4px; */
-	/* width: 500px; */
-	display: block;
-}
-.center {
-	padding: 20px;
-	width: 600px;
-	margin: 100px auto;
-	text-align: center;
-}
-.center::after{
-	content: " ";	
-	display: block;
-	height: 0;
-	clear: both;
-}
-#file-upload {
-	width: 500px;
-	border: none;
-}
-.cardTitle {
-	margin: auto;
-	text-align: center;
+	font-size: 24px;
+	box-sizing: border-box;
 	/* border: 1px solid black; */
 }
-#logout {
-	float: right;
+#container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
 }
-#login-container {
+#menu-bar {
+	display: flex;
+	flex-direction: row;
+	/* justify-content: flex-start; */
+	width: 100%;
+	background-color: green;
+	border: 1px solid black;
+}
+.menu-bar-item {
+	padding: 5px 10px 15px 10px;
+}
+.menu-bar-item:hover {
+	background-color: lightgreen;
+}
+.menu-bar-item > a{
+	font-size: 30px;
+	text-decoration: none;
+	color: white;
+}
+#logout {
+	margin-left: auto;
+	/* align-self: flex-end; */
+	/* justify-self: flex-end; */
+}
+#body-container {
+	display: flex;
+	flex-direction: row;
+	height: 100%;
+	width: 100%;
+}
+#side-bar {
+	display: flex;
+	flex-direction: column;
+	width: 300px;
+	height: 100%;
+	overflow: auto;
+	background-color: gold;
+}
+#input-field-container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
+}
+.edit-input {
+	margin: 10px;
+	padding: 15px;
+}
+#center-container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+}
+.main-menu-item {
+	padding: 10px;
+	margin: 15px;
+	width: 500px;
+	font-size: 30px;
+	border-radius: 5px;
+	background-color: #428bd0;
+}
+.main-menu-title {
+	padding: 10px;
+	width: 30%;
+	text-align: center;
+	font-size: 30px;
 }
 #login-button {
 	background-color: green;
-	color: white;
-	width: 600px;
-	border-radius: 4px;
-	padding: 7px;
-}
-#Office {
-	display: inline-block; 
-	float: left;
-	width: 40%;
-	padding: 0 40px;
-	text-align: left;
-}
-#Email {
-	display: inline-block;
-	float: right;
-	width: 40%;
-	text-align: left;
-}
-table {
-	font-family: arial, sans-serif;
-	border-collapse: collapse;
-	width: 100%;
-}
-td, th {
-	border: 1px solid #dddddd;
-	text-align: center;
-	padding: 8px;
-}
-tr:nth-child(even) {
-	background-color: #dddddd;
-}
-ul.menu-bar {
-  list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	background-color: #38c93f;
-}
-li.menu-bar-item {
-	float: left;
-}
-li a{
-	display: block;
-	color: white;
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none;
-}
-li a:hover:not(.active) {
-	background-color: #3fff00;
-}
-.active {
-	background-color: #3fff00;
-}
-.side-menu-container {
-  list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: auto;
-	background-color: #999;
-	width: 330px;
-	height: 546px;
-	display: inline-block;
-	float: left;
-}
-.side-menu-item:hover {
-	background-color: #aaa;
-}
-.side-menu-item.selected {
-	background-color: #fff;
-}
-.pickit-list {
-	list-style-type: none;
-	overflow: auto;
-	height: 410px;
-	width: 300px;
-	display: inline-block;
-	border: 1px solid black;
-}
-.pickit-list-item{
-	text-align: center;
-	background-color: lightgreen;
-}
-.selected {
-	background-color: green !important;
-}
-#unpicked {
-	float: left;
-}
-#picked {
-	float: right;
 }
 #pickit-list-container {
-	margin: 25px auto;
-	width: 800px;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	padding: 0 10px;
+	margin: 10px 0;
+}
+.pickit-list-separate-container {
+	display: flex;
+	flex-direction: column;
+	width: 30%;
+}
+.pickit-list {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	overflow: auto;
+	border: 5px solid orange;
+	height: 100%;
+}
+.pickit-list-item {
+	background-color: gold;
+}
+#pickit-list-button-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
 }
 .pickit-list-button {
-	border: 1px solid black;
+	padding: 10px;
+	margin: 10px;
 	border-radius: 4px;
-	background-color: lightgreen;
-	padding: 5px;
-	margin: 5px auto;
+	background-color: #428bd0;
 }
-.pickit-list-button-container {
-	border: 1px solid black;
-	width: 154px;
-	float: left;
+.pickit-list-form-button {
+	width: 100%;
+	border: 0px;
+	background-color: #428bd0;
+}
+.pickit-list-title {
+	padding: 10px;
 	text-align: center;
-	margin: auto;
+	background-color: brown;
 }
 .missing-info {
 	background-color: red;
 }
-#print > input {
-	width: 100px;
+.selected {
+	background-color: #428bd0;
+}
+#card-center-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	border: 5px solid black;
+	margin: 0 0 10px 0;
+}
+/* #card-center-container:nth-of-type(even){ */
+/* 	page-break-after: always; */
+/* } */
+.break {
+	page-break-after: always;
+}
+#card-table {
+	width: 100%;
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+}
+#card-table td, #card-table th {
+	border: 1px solid #dddddd;
+	text-align: center;
+	padding: 8px;
+}
+#card-table tr:nth-child(even) {
+	background-color: #dddddd;
+}
+#card-contact-container {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: space-around;
+}
+.card-title {
+	font-weight: bold;
 }

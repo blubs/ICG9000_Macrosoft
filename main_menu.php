@@ -17,25 +17,26 @@ session_start();
 
 	}
 ?>
-<!DOCTYPE html>
 <html>
 	<head>
 		<title>Card Generator</title>
 		<link rel='stylesheet'type='text/css' href='styles.css'>
 	</head>
 	<body>
+		<div id='container'>
 		<?php include_once('menu-bar.php');?>
-		<div class='center'>
-			<h1>Main Menu</h1>
+		<div id='center-container'>
+			<h1 class='main-menu-title'>Main Menu</h1>
 			<form action='print-information-cards.php'>
-				<input name='print-information-cards' value='Print Information Cards' type='submit'>
+				<input class='main-menu-item' name='print-information-cards' value='Print Information Cards' type='submit'>
 			</form>
 			<form action='edit.php'>
-				<input name='edit-professor-information' value='Edit Professor Information' type='submit'>
+				<input class='main-menu-item' name='edit-professor-information' value='Edit Professor Information' type='submit'>
 			</form>
 			<form action='select-file-upload.php'>
-				<input name='upload' value="CSV Upload" type='submit'>
+				<input class='main-menu-item' name='upload' value="CSV Upload" type='submit'>
 			</form>
+		</div>
 		</div>
 	</body>
 </html>
