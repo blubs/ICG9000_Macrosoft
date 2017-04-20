@@ -7,7 +7,7 @@
 			$query = "SELECT Faculty FROM professors WHERE (office_hours is NULL OR room is NULL) OR (phone is NULL AND email is NULL)";
 			$result = $con->query($query);
 			$rows = $result->num_rows;
-			if($rows > 0){
+			if($rows == 0){
 				echo 'Unable to print all professors there are '.$rows.' Professors with missing info';
 			}else{
 				require 'generate.php';

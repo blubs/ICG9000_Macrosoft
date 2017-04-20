@@ -5,6 +5,33 @@
 	box-sizing: border-box;
 	/* border: 1px solid black; */
 }
+body {
+	background-color: #ccb185;
+}
+::-webkit-scrollbar {
+	background-color: #cc6600;
+	/* background-color: blue; */
+}
+::-webkit-scrollbar-button {
+	/* background-color: cyan; */
+}
+::-webkit-scrollbar-thumb {
+	background-color: #ffa64d;
+	/* background-color: black; */
+	border-left: 3px solid #cc6600;
+	width: 200px;
+}
+::-webkit-scrollbar-track {
+	/* background-color: #cc6600; */
+	/* background-color: green; */
+}
+::-webkit-scrollbar-track-piece {
+	/* background-color: #cc6600; */
+	/* background-color: yellow; */
+}
+::-webkit-scrollbar-corner {
+	background-color: lightgreen;
+}
 #container {
 	display: flex;
 	flex-direction: column;
@@ -17,13 +44,14 @@
 	/* justify-content: flex-start; */
 	width: 100%;
 	background-color: green;
-	border: 1px solid black;
+	/* border: 1px solid black; */
 }
 .menu-bar-item {
 	padding: 5px 10px 15px 10px;
 }
 .menu-bar-item:hover {
-	background-color: lightgreen;
+	background-color: #00e600;
+	/* border: 2px solid #1ca117; */
 }
 .menu-bar-item > a{
 	font-size: 30px;
@@ -59,6 +87,18 @@
 	margin: 10px;
 	padding: 15px;
 }
+.edit-input:focus {
+	outline: none;
+}
+#update-button {
+	background-color: #cc6600;
+	font-weight: bold;
+	border-radius: 8px;
+	border: none;
+}
+#update-button:hover {
+	background-color: gold;
+}
 #center-container {
 	display: flex;
 	flex-direction: column;
@@ -72,8 +112,14 @@
 	margin: 15px;
 	width: 500px;
 	font-size: 30px;
+	font-weight: bold;
 	border-radius: 5px;
-	background-color: #428bd0;
+	/* background-color: #428bd0; */
+	background-color: #cc6600;
+	border: 1px solid transparent;
+}
+.main-menu-item:focus {
+	outline: none;
 }
 .main-menu-title {
 	padding: 10px;
@@ -83,6 +129,10 @@
 }
 #login-button {
 	background-color: green;
+	color: white;
+}
+#login-button:hover {
+	background-color: #00e600;
 }
 #pickit-list-container {
 	display: flex;
@@ -103,11 +153,12 @@
 	flex-direction: column;
 	width: 100%;
 	overflow: auto;
-	border: 5px solid orange;
+	border: 5px solid #cc6600;
 	height: 100%;
 }
 .pickit-list-item {
 	background-color: gold;
+	border: 2px solid transparent;
 }
 #pickit-list-button-container {
 	display: flex;
@@ -119,24 +170,28 @@
 .pickit-list-button {
 	padding: 10px;
 	margin: 10px;
-	border-radius: 4px;
-	background-color: #428bd0;
+	border-radius: 8px;
+	background-color: #cc6600;
 }
 .pickit-list-form-button {
 	width: 100%;
 	border: 0px;
-	background-color: #428bd0;
+	background-color: inherit;
+}
+.pickit-list-button:hover {
+	background-color: gold;	
 }
 .pickit-list-title {
 	padding: 10px;
 	text-align: center;
-	background-color: brown;
+	background-color: #cc6600;
 }
 .missing-info {
-	background-color: red;
+	background-color: #ffa64d;
 }
 .selected {
-	background-color: #428bd0;
+	background-color: #bcdd55;
+	border: 2px solid #1ca117;
 }
 #card-center-container {
 	display: flex;

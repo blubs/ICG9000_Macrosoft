@@ -51,7 +51,7 @@
 					<input class='edit-input' type='text' placeholder='Phone Number'>
 					<input class='edit-input' type='text' placeholder='Email'>
 					<input class='edit-input' type='text' placeholder='Office Room'>
-					<input class='edit-input' type='button' value='update'>
+					<input class='edit-input' id='update-button' type='button' value='UPDATE'>
 				</div>
 			</div>
 		</div>
