@@ -1,6 +1,64 @@
 $(document).ready(function(){
 	$('#inputData').val('');
 
+	$('#update-button').on('click', function(){
+			var contents = {
+				'faculty': $('#side-bar .selected').text(),
+				'office_hours': $('#edit-office-hours').val(),
+				'phone':$('#edit-phone').val(),
+				'email':$('#edit-email').val(),
+				'room':$('#edit-room').val()
+			}; 	
+			/* console.log(JSON.stringify(contents)); */
+			$.ajax({
+				url: 'update-professor.php',
+				type: 'post',
+				dataType: 'json',
+				data: contents,
+				success: function(data){
+					console.log("SUCCESS: update-post");
+					console.log(JSON.stringify(data));
+					$('#success').css('display', 'initial');
+					$('#success').fadeOut(5000, function(){
+						$('#success').css('display', 'none');
+					});
+					if($('#edit-room').val() !== '' &&
+						 $('#edit-office-hours').val() !== '' &&
+						 ($('#edit-phone').val() !== '' ||
+							$('#edit-email').val() !== '')){
+						$('#side-bar > .selected').removeClass('missing-info');
+					}
+				},
+				error: function(data){
+					console.log("error");
+				}
+			});
+	});
+
+	$('#side-bar > .side-bar-item').on('click', function(){
+		$('#side-bar > .side-bar-item').removeClass('selected');
+		$(this).addClass('selected');
+		
+		var contents = {
+			'faculty': $(this).text()
+		}
+		$.ajax({
+			url: 'update-professor.php',
+			type: 'get',
+			dataType: 'json',
+			data: contents,
+			success: function(data){
+				$('#edit-office-hours').val(data.office_hours);
+				$('#edit-phone').val(data.phone);
+				$('#edit-email').val(data.email);
+				$('#edit-room').val(data.room);
+			},
+			error: function(data){
+				console.log('error');
+			}
+		});
+	});
+
 	$('#add').on('click', function(){
 		$li = $('#unpicked .selected');
 		

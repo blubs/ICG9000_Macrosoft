@@ -4,19 +4,6 @@
 	if(!isset($_SESSION['username'])){
 		header('location: index.php');
 	}
-	if(isset($_POST['update'], $_POST['Faculty'])){
-		$Faculty = $con->escape_string($_POST['Faculty']);
-		foreach($_POST as $key=>$value){
-			if($key=='Faculty' || $key=='update'){
-				continue;	
-			}else{
-				$col = $con->escape_string($key);
-				$val = $con->escape_string($value);
-				$query = "UPDATE professors SET $col='$val' WHERE Faculty='$Faculty'";
-				$con->query($query);
-			}
-		}
-	}
 ?>
 <html>
 	<head>
@@ -47,11 +34,13 @@
 					?>
 				</div>
 				<div id='input-field-container'>
-					<input class='edit-input' type='text' placeholder='Office Hours'>
-					<input class='edit-input' type='text' placeholder='Phone Number'>
-					<input class='edit-input' type='text' placeholder='Email'>
-					<input class='edit-input' type='text' placeholder='Office Room'>
+					<input class='edit-input' id='edit-office-hours' type='text' placeholder='Office Hours'>
+					<input class='edit-input' id='edit-phone' type='text' placeholder='Phone Number'>
+					<input class='edit-input' id='edit-email' type='text' placeholder='Email'>
+					<input class='edit-input' id='edit-room' type='text' placeholder='Office Room'>
 					<input class='edit-input' id='update-button' type='button' value='UPDATE'>
+					<div id='success' class='edit-input update-message'>SUCCESS</div>
+					<div id='failure' class='edit-input update-message'>FAILURE</div>
 				</div>
 			</div>
 		</div>

@@ -16,7 +16,7 @@
 	<body>
 		<div id='container'>
 		<div id='center-container'>
-			<h1 class='main-menu-title'>Login</h1>
+			<!--<h1 class='main-menu-title'>Login</h1>-->
 			<form action='index.php' method='post'>
 				<input class='main-menu-item' name='username' type='text' placeholder='Username'><br/>
 				<input class='main-menu-item' name='password' type='password' placeholder='Password'><br/>

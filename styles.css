@@ -8,29 +8,31 @@
 body {
 	background-color: #ccb185;
 }
-::-webkit-scrollbar {
+.pickit-list::-webkit-scrollbar{
 	background-color: #cc6600;
-	/* background-color: blue; */
+}
+#side-bar::-webkit-scrollbar {
+	background-color: #cc6600;
 }
 ::-webkit-scrollbar-button {
-	/* background-color: cyan; */
 }
-::-webkit-scrollbar-thumb {
+.pickit-list::-webkit-scrollbar-thumb {
 	background-color: #ffa64d;
-	/* background-color: black; */
-	border-left: 3px solid #cc6600;
-	width: 200px;
+	border-left: 2px solid #cc6600;
+}
+#side-bar::-webkit-scrollbar-thumb {
+	background-color: #ffa64d;
+	border-left: 2px solid #cc6600;
+	border-right: 2px solid #cc6600;
 }
 ::-webkit-scrollbar-track {
-	/* background-color: #cc6600; */
-	/* background-color: green; */
 }
 ::-webkit-scrollbar-track-piece {
-	/* background-color: #cc6600; */
-	/* background-color: yellow; */
 }
 ::-webkit-scrollbar-corner {
-	background-color: lightgreen;
+}
+.main-menu-item::-webkit-input-placeholder {
+	color: white;
 }
 #container {
 	display: flex;
@@ -77,6 +79,9 @@ body {
 	overflow: auto;
 	background-color: gold;
 }
+.side-bar-item {
+	border: 2px solid transparent;
+}
 #input-field-container {
 	display: flex;
 	flex-direction: column;
@@ -111,12 +116,16 @@ body {
 	padding: 10px;
 	margin: 15px;
 	width: 500px;
+	color: white;
 	font-size: 30px;
 	font-weight: bold;
 	border-radius: 5px;
 	/* background-color: #428bd0; */
 	background-color: #cc6600;
 	border: 1px solid transparent;
+}
+.main-menu-item:hover {
+	background-color: gold;
 }
 .main-menu-item:focus {
 	outline: none;
@@ -178,6 +187,9 @@ body {
 	border: 0px;
 	background-color: inherit;
 }
+.pickit-list-form-button:focus {
+	outline: none;
+}
 .pickit-list-button:hover {
 	background-color: gold;	
 }
@@ -200,10 +212,8 @@ body {
 	text-align: center;
 	border: 5px solid black;
 	margin: 0 0 10px 0;
+	background-color: white;
 }
-/* #card-center-container:nth-of-type(even){ */
-/* 	page-break-after: always; */
-/* } */
 .break {
 	page-break-after: always;
 }
@@ -228,4 +238,17 @@ body {
 }
 .card-title {
 	font-weight: bold;
+}
+.update-message {
+	text-align: center;
+	font-weight: bold;
+	display: none;
+}
+#success {
+	background-color: #bcdd55;
+	border: 2px solid #1ca117;
+}
+#failure {
+	background-color: #ff704d; 
+	border: 2px solid #ff3300;
 }

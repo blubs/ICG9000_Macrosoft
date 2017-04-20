@@ -4,7 +4,7 @@
 	/* $input = json_decode(file_get_contents('php://input')); */
 	/* print_r($array); */
 	$array = array();
-	if(!isset($_POST['input'])){
+	if(isset($_POST['input'])){
 		$array = explode('.', $_POST['input']);	
 	}else{
 		/* array should be all the professors from the professor list */
@@ -18,6 +18,7 @@
 	<head>
 		<title>Generate Cards</title>
 		<link rel='stylesheet'type='text/css' href='styles.css'>
+		<style>body {background-color: white}</style>
 	</head>
 	<body>
 		<?php
