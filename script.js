@@ -1,25 +1,93 @@
 $(document).ready(function(){
 	$('#inputData').val('');
 
-	/* $('#account-table-row > #account-table-delete').on('click', function(){ */
-	/* 	console.log($(this).parent().find('#account-user').text()); */	
-	/* 	var contents = { */
-	/* 		'user': $(this).parent().find('#account-user').text() */
-	/* 	} */
+	$('#side-bar > .account-side-bar-item > .account-delete').on('click', function(){
+		console.log($(this).parent().find('#account-user').text());	
+		var contents = {
+			'username': $(this).parent().find('#account-user').text()
+		}
+		$element = $(this);
+		$.ajax({
+			url: 'update-user.php',
+			type: 'post',
+			dataType: 'json',
+			data: contents,
+			success: function(data){
+				$element.parent().remove();
+			},
+			error: function(){
+				console.log("ERROR");	
+			}
+		});
+	});
 
-	/* 	/1* $.ajax({ *1/ */
-	/* 	/1* 	url: 'update-professor.php', *1/ */
-	/* 	/1* 	type: 'post', *1/ */
-	/* 	/1* 	dataType: 'json', *1/ */
-	/* 	/1* 	data: contents, *1/ */
-	/* 	/1* 	success: function(){ *1/ */
-	/* 	/1* 		console.log("SUCCESS"); *1/ */	
-	/* 	/1* 	}, *1/ */
-	/* 	/1* 	error: function(){ *1/ */
-	/* 	/1* 		console.log("SUCCESS"); *1/ */	
-	/* 	/1* 	} *1/ */
-	/* 	}); */
-	/* }); */
+	$('#user-change-password').on('click', function(){
+			if($('#change-password-new').val() == $('#change-password-new-retyped').val()){
+				var contents = {
+					'username': $('#side-bar > .account-side-bar-item > .selected').text(),
+					'password': $('#change-password-current').val(),
+					'new-password': $('#change-password-new').val()
+				}
+
+				$.ajax({
+					url: 'update-user.php',
+					type: 'post',
+					dataType: 'json',
+					data: contents,
+					success: function(data){
+						console.log("Password Changed");
+					},
+					error: function(data){
+						console.log("Error Changing Passwored");
+					}
+				})
+			}
+	});
+
+	$('#create-user-button').on('click',function(){
+			if($('#user-password').val() == $('#user-retyped-password').val()){
+				var contents = {
+					'username':$('#user-username').val(),
+					'password':$('#user-password').val()
+				}
+
+				$.ajax({
+					url: 'update-user.php',
+					type: 'post',
+					dataType: 'json',
+					data: contents,
+					success: function(){
+						console.log("user created");
+					},
+					error: function(){
+						console.log("Error creating user");
+					}
+				});
+			}
+	});
+
+	$('#side-bar > .account-side-bar-item > .side-bar-item').on('click', function(){
+		$('#side-bar > .account-side-bar-item > .side-bar-item').removeClass('selected');
+		$(this).addClass('selected');
+	});
+	$('.account-tab').on('click', function(){
+		$('.account-tab').css('border-bottom', '2px solid black');
+		$('.account-tab').css('border-left', '2px solid black');
+		$('.account-tab').css('border-right', '2px solid black');
+		$(this).css('border-bottom', 'none');
+
+		if($(this).text() == 'Change Password'){
+			$(this).css('border-right', 'none');
+			$(this).css('border-left', 'none');
+			$('.account-tab-section').css('display', 'none');
+			$('#change-password').css('display', 'flex');
+		}else if($(this).text() == 'Add User'){
+			$(this).css('border-right', 'none');
+			$(this).css('border-left', 'none');
+			$('.account-tab-section').css('display', 'none');
+			$('#add-user').css('display', 'flex');
+		}
+	});
 
 	$('#update-button').on('click', function(){
 			var contents = {

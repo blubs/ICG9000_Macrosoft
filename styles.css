@@ -83,6 +83,8 @@ body {
 }
 .side-bar-item {
 	border: 2px solid transparent;
+	padding: 0 4px;
+	width: 100%;
 }
 #input-field-container {
 	display: flex;
@@ -207,7 +209,7 @@ body {
 	background-color: #ffa64d;
 }
 .selected {
-	background-color: #bcdd55;
+	background-color: #bcdd55 !important;
 	border: 2px solid #1ca117;
 }
 #card-center-container {
@@ -262,31 +264,48 @@ body {
 	background-color: #ff704d; 
 	border: 2px solid #ff3300;
 }
-#account-table-container {
+.account-side-bar-item {
 	display: flex;
-	flex-direction: column;
-	align-items: center;
+	flex-direction: row;
 	width: 100%;
 }
-#account-table {
-	display: flex;
-	flex-direction: column;
-	width: 90%;
-	height: 100%;
-	margin: 0 0 20px 0;
-	border: 5px solid #cc6600;
+.account-side-bar-item > .side-bar-item {
+	background-color: #ffa64d;
 }
-#account-table-row {
+.account-delete {
+	background-color: #ff704d; 
+	border: 2px solid #ff3300;
+}
+.account-tab-container {
 	display: flex;
 	flex-direction: row;
 }
-.account-table-row-item {
+.account-tab {
 	width: 50%;
 	text-align: center;
-	background-color: #ffcc00;
-	border: 2px solid yellow;
+	padding: 8px;
+	border-radius: 8px;
+	border-top: 2px solid black;
 }
-#account-table-delete {
-	background-color: #ff704d; 
-	border: 2px solid #ff3300;
+#change-password-tab {
+	border-bottom: 2px solid transparent;
+}
+#add-user-tab {
+	border-bottom-left-radius: 8px;
+	border-bottom: 2px solid black;
+	border-left: 2px solid black;
+}
+.account-tab-section {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+#add-user {
+	display: none;
+}
+.edit-input-button {
+	background-color: #cc6600;
+	font-weight: bold;
+	border-radius: 8px;
+	border: none;
 }
