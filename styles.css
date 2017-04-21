@@ -275,6 +275,7 @@ body {
 .account-delete {
 	background-color: #ff704d; 
 	border: 2px solid #ff3300;
+	cursor: pointer;
 }
 .account-tab-container {
 	display: flex;

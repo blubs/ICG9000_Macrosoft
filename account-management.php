@@ -23,9 +23,12 @@
 					<?php
 						$query = 'SELECT username FROM users';
 						$result = $con->query($query);
+						echo "<div class='account-side-bar-item'>";
+						echo "<div id='account-user' class='side-bar-item'>".$_SESSION['username']."</div>";
+						echo "</div>";
 						while($row = $result->fetch_assoc()){
 							if($row['username'] == $_SESSION['username']){
-								continue;
+								continue;	
 							}
 							echo "<div class='account-side-bar-item'>";
 							echo "<div id='account-user' class='side-bar-item'>".$row['username']."</div>";
