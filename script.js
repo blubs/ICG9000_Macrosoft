@@ -1,6 +1,26 @@
 $(document).ready(function(){
 	$('#inputData').val('');
 
+	$('#account-table-row > #account-table-delete').on('click', function(){
+		console.log($(this).parent().find('#account-user').text());	
+		var contents = {
+			'user': $(this).parent().find('#account-user').text()
+		}
+
+		$.ajax({
+			url: 'update-professor.php',
+			type: 'post',
+			dataType: 'json',
+			data: contents,
+			success: function(){
+				console.log("SUCCESS");	
+			},
+			error: function(){
+				console.log("SUCCESS");	
+			}
+		});
+	});
+
 	$('#update-button').on('click', function(){
 			var contents = {
 				'faculty': $('#side-bar .selected').text(),
@@ -16,8 +36,8 @@ $(document).ready(function(){
 				dataType: 'json',
 				data: contents,
 				success: function(data){
-					console.log("SUCCESS: update-post");
-					console.log(JSON.stringify(data));
+					/* console.log("SUCCESS: update-post"); */
+					/* console.log(JSON.stringify(data)); */
 					$('#success').css('display', 'initial');
 					$('#success').fadeOut(5000, function(){
 						$('#success').css('display', 'none');
@@ -30,7 +50,10 @@ $(document).ready(function(){
 					}
 				},
 				error: function(data){
-					console.log("error");
+					$('#failure').css('display', 'initial');
+					$('#failure').fadeOut(5000, function(){
+						$('#failure').css('display', 'none');
+					});
 				}
 			});
 	});

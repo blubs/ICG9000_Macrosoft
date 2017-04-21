@@ -252,3 +252,31 @@ body {
 	background-color: #ff704d; 
 	border: 2px solid #ff3300;
 }
+#account-table-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+#account-table {
+	display: flex;
+	flex-direction: column;
+	width: 90%;
+	height: 100%;
+	margin: 0 0 20px 0;
+	border: 5px solid #cc6600;
+}
+#account-table-row {
+	display: flex;
+	flex-direction: row;
+}
+.account-table-row-item {
+	width: 50%;
+	text-align: center;
+	background-color: #ffcc00;
+	border: 2px solid yellow;
+}
+#account-table-delete {
+	background-color: #ff704d; 
+	border: 2px solid #ff3300;
+}
