@@ -1,25 +1,25 @@
 $(document).ready(function(){
 	$('#inputData').val('');
 
-	$('#account-table-row > #account-table-delete').on('click', function(){
-		console.log($(this).parent().find('#account-user').text());	
-		var contents = {
-			'user': $(this).parent().find('#account-user').text()
-		}
+	/* $('#account-table-row > #account-table-delete').on('click', function(){ */
+	/* 	console.log($(this).parent().find('#account-user').text()); */	
+	/* 	var contents = { */
+	/* 		'user': $(this).parent().find('#account-user').text() */
+	/* 	} */
 
-		$.ajax({
-			url: 'update-professor.php',
-			type: 'post',
-			dataType: 'json',
-			data: contents,
-			success: function(){
-				console.log("SUCCESS");	
-			},
-			error: function(){
-				console.log("SUCCESS");	
-			}
-		});
-	});
+	/* 	/1* $.ajax({ *1/ */
+	/* 	/1* 	url: 'update-professor.php', *1/ */
+	/* 	/1* 	type: 'post', *1/ */
+	/* 	/1* 	dataType: 'json', *1/ */
+	/* 	/1* 	data: contents, *1/ */
+	/* 	/1* 	success: function(){ *1/ */
+	/* 	/1* 		console.log("SUCCESS"); *1/ */	
+	/* 	/1* 	}, *1/ */
+	/* 	/1* 	error: function(){ *1/ */
+	/* 	/1* 		console.log("SUCCESS"); *1/ */	
+	/* 	/1* 	} *1/ */
+	/* 	}); */
+	/* }); */
 
 	$('#update-button').on('click', function(){
 			var contents = {

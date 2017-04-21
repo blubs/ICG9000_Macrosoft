@@ -20,7 +20,7 @@
 		<link rel='stylesheet'type='text/css' href='styles.css'>
 		<style>body {background-color: white}</style>
 	</head>
-	<body>
+	<body style='background-color: white'>
 		<?php
 			foreach($array as $key => $value){
 				if($value == ''){
@@ -30,20 +30,22 @@
 				$Faculty = $_POST['Faculty'];
 				$query = "SELECT Course, Sec, Days, `Start Time`, `End Time`, Room FROM csc WHERE Faculty='$Faculty'";
 				$result = $con->query($query) or die("Query failed: ". $con->error);
-				if($result->num_rows > 6 || $key%2==1){
+				if(true){
 					echo '<div id="card-center-container" class="break">';
 				}else{
 					echo '<div id="card-center-container">';
 				}
 				echo '
-					<h2 class="cardTitle">CALIFORNIA STATE UNIVERSITY, SACRAMENTO</h2>
-					<h2 class="cardTitle">DEPARTMENT OF COMPUTER SCIENCE</h2>
-					<h2 class="cardTitle">FALL 2016</h2>
+					<h2 class="card-title">CALIFORNIA STATE UNIVERSITY, SACRAMENTO</h2>
+					<h2 class="card-title">DEPARTMENT OF COMPUTER SCIENCE</h2>
+					<h2 class="card-title">FALL 2016</h2>
 					<br/>
-					<h2 class="cardTitle">';
+					<h2 class="card-title">';
 				echo $_POST['Faculty'].'</h2>';
+				$font = (.75)/$result->num_rows;
+				$font = min(max($font,0.175),0.2);
 				echo '
-					<table id="card-table">
+					<table id="card-table" style="font-size: '.$font.'in;">
 						<tr>
 							<th>Course</th>
 							<th>Section</th>

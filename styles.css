@@ -1,13 +1,16 @@
 *{
 	margin: 0;
 	padding: 0;
-	font-size: 24px;
 	box-sizing: border-box;
 	/* border: 1px solid black; */
 }
 body {
 	background-color: #ccb185;
+	font-size: 24px;
 }
+/* @page { */
+/* 	margin: 0; */
+/* } */
 .pickit-list::-webkit-scrollbar{
 	background-color: #cc6600;
 }
@@ -43,7 +46,6 @@ body {
 #menu-bar {
 	display: flex;
 	flex-direction: row;
-	/* justify-content: flex-start; */
 	width: 100%;
 	background-color: green;
 	/* border: 1px solid black; */
@@ -91,6 +93,7 @@ body {
 .edit-input {
 	margin: 10px;
 	padding: 15px;
+	font-size: 24px;
 }
 .edit-input:focus {
 	outline: none;
@@ -186,6 +189,7 @@ body {
 	width: 100%;
 	border: 0px;
 	background-color: inherit;
+	font-size: 24px;
 }
 .pickit-list-form-button:focus {
 	outline: none;
@@ -194,6 +198,7 @@ body {
 	background-color: gold;	
 }
 .pickit-list-title {
+	font-size: 24px;
 	padding: 10px;
 	text-align: center;
 	background-color: #cc6600;
@@ -208,14 +213,19 @@ body {
 #card-center-container {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	/* justify-content: center; */
 	text-align: center;
 	border: 5px solid black;
 	margin: 0 0 10px 0;
+	padding-top: 0.1in;
 	background-color: white;
+	height: 5in;
 }
 .break {
-	page-break-after: always;
+	page-break-after: auto;
+}
+.card-title {
+	font-size: .2in;
 }
 #card-table {
 	width: 100%;
@@ -225,7 +235,7 @@ body {
 #card-table td, #card-table th {
 	border: 1px solid #dddddd;
 	text-align: center;
-	padding: 8px;
+	padding: 4px;
 }
 #card-table tr:nth-child(even) {
 	background-color: #dddddd;

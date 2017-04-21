@@ -29,9 +29,8 @@
 							echo "<div id='account-table-row'>";
 							echo '<div class="account-table-row-item" id="account-user">'.$row['username'].'</div>';
 							echo "
-								<div class='account-table-row-item' id='account-table-delete'>
-									DELETE
-								</div>
+								<div class='account-table-row-item' id='account-change-password'>Change Password</div>
+								<div class='account-table-row-item' id='account-table-delete'>DELETE</div>
 								</div>";
 						}
 					?>
