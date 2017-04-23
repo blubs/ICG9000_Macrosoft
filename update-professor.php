@@ -1,9 +1,6 @@
 <?php
-	require 'db.php';
-	session_start();
-	if(!isset($_SESSION['username'])){
-		header('location: index.php');
-	}
+	require 'isloggedin.php';
+
 	header("Content-Type: application/json; charset=UTF-8");
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		if(isset($_POST['user'])){

@@ -1,8 +1,6 @@
 <?php
-	require 'db.php';
-	session_start();
-	/* $input = json_decode(file_get_contents('php://input')); */
-	/* print_r($array); */
+	require 'isloggedin.php';
+
 	$array = array();
 	if(isset($_POST['input'])){
 		$array = explode('.', $_POST['input']);	

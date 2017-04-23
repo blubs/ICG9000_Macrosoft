@@ -1,9 +1,14 @@
 <?php
-	require 'db.php';
-	session_start();
+	require 'isloggedin.php';
 
-	if(!isset($_SESSION['username'])){
-		header('location: index.php');
+	$id = $_SESSION['id'];
+	$query = "SELECT permissions FROM users WHERE id='$id'";
+	$result = $con->query($query);
+	$row = $result->fetch_assoc();
+	$permissions = $row['permissions'];
+
+	if($permissions != 0){
+		header('location: main_menu.php');
 	}
 ?>
 <html>

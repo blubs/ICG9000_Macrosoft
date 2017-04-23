@@ -1,7 +1,6 @@
 <?php
-	require 'db.php';
-	session_start();
-	
+	require 'isloggedin.php';
+
 	$fname = $_FILES['file']['name'];
 	$chk_ext = explode('.', $fname);
 	
@@ -28,6 +27,7 @@
 			}
 		}
 	}
+	header('location: main_menu.php');
 function createTable($headers, $varchar){
 	global $con;
 	$query = "CREATE TABLE csc (";
