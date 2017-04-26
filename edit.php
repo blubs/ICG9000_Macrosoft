@@ -1,5 +1,11 @@
 <?php
-	require 'isloggedin.php';
+	require_once 'isloggedin.php';
+
+	$log = isloggedin();
+	if($log != 1){
+		header('location: index.php');
+	}
+
 ?>
 <html>
 	<head>

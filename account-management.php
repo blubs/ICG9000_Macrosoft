@@ -1,5 +1,10 @@
 <?php
-	require 'isloggedin.php';
+	require_once 'isloggedin.php';
+
+	$log = isloggedin();
+	if($log != 1){
+		header('location: index.php');
+	}
 
 	$id = $_SESSION['id'];
 	$query = "SELECT permissions FROM users WHERE id='$id'";
@@ -59,6 +64,10 @@
 						<input id='user-retyped-password' class='edit-input' type='password' placeholder='Retype Password'>
 						<input class='edit-input edit-input-button' id='create-user-button' type='button' value='Create User'>
 					</div>
+				<div id='ajax-visual'>
+					<div id='success' class='edit-input update-message'>SUCCESS</div>
+					<div id='failure' class='edit-input update-message'>FAILURE</div>
+				</div>
 				</div>
 			</div>
 		</div>

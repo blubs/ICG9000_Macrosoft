@@ -285,16 +285,8 @@ body {
 	width: 50%;
 	text-align: center;
 	padding: 8px;
-	border-radius: 8px;
-	border-top: 2px solid black;
-}
-#change-password-tab {
-	border-bottom: 2px solid transparent;
-}
-#add-user-tab {
-	border-bottom-left-radius: 8px;
+	border-right: 2px solid black;
 	border-bottom: 2px solid black;
-	border-left: 2px solid black;
 }
 .account-tab-section {
 	display: flex;
@@ -309,4 +301,10 @@ body {
 	font-weight: bold;
 	border-radius: 8px;
 	border: none;
+}
+#ajax-visual {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 20%;	
 }

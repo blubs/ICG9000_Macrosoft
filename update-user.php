@@ -1,10 +1,18 @@
 <?php
-	require 'isloggedin.php';
+	require_once 'isloggedin.php';
+
+	$log = isloggedin();
+	if($log == 0){
+		header('location: index.php');
+	}
 
 	header("Content-Type: application/json; charset=UTF-8");
 
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		if(isset($_POST['username'], $_POST['password'], $_POST['new-password'])){
+			if($_POST['new-password'] != $_POST['new-password-retyped']){
+				 die('Passwords do not  match');
+			}
 			$username = $con->escape_string($_POST['username']);
 			$result = $con->query("SELECT * FROM users WHERE username='$username'") or die($con->error());
 			
@@ -23,6 +31,8 @@
 				$query = "UPDATE users SET password='$password' WHERE username='$username'";	
 				$result = $con->query($query);
 				echo json_encode('Changed password for '.$username);
+			}else{
+				die('Password of user does not match');
 			}
 		}else if(isset($_POST['username'], $_POST['password'])){
 			$username = $_POST['username'];

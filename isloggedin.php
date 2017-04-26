@@ -1,18 +1,21 @@
 <?php
-require 'db.php';
+require_once 'db.php';
 session_start();
+
+function isloggedin(){
+	global $con;
 	if(!isset($_SESSION['username'], $_SESSION['id'], $_SESSION['session'])){
-		header('location: index.php');
+		return 0;
 	}else{
 		$id = $_SESSION['id'];
 		$session = $_SESSION['session'];
 		$query = "SELECT id FROM user_session WHERE id='$id' AND session='$session'";
 		$result = $con->query($query);
-		if(!($result->num_rows > 0)){
-			session_unset();
-			header('location: index.php');
+		if($result->num_rows > 0){
+			return 1;
 		}else {
-			header('main_menu.php');
+			return 0;
 		}
 	}
+}
 ?>

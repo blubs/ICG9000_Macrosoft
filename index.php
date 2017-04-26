@@ -1,6 +1,10 @@
 <?php
-	require 'db.php';
-	session_start();
+	require_once 'isloggedin.php';
+
+	$log = isloggedin();
+	if($log == 1){
+		header('location: main_menu.php');
+	}
 
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		if(isset($_POST['login'])){

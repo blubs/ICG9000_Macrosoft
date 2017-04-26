@@ -1,5 +1,10 @@
 <?php
-	require 'isloggedin.php';
+	require_once 'isloggedin.php';
+
+	$log = isloggedin();
+	if($log == 1){
+		header('location: main_menu.php');
+	}
 
 	$fname = $_FILES['file']['name'];
 	$chk_ext = explode('.', $fname);

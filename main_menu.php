@@ -1,17 +1,9 @@
 <?php
-	require 'isloggedin.php';
+	require_once 'isloggedin.php';
 
-	if($_SERVER['REQUEST_METHOD'] == 'POST'){
-		if(isset($_POST['edit-professor-information'])){
-			header('location: edit.php');
-		}elseif(isset($_POST['upload'])){
-			/* require 'insert.php'; */
-		}elseif(isset($_POST['logout'])){
-			header('location: logout.php');
-		}elseif(isset($_POST['edit'])){
-			header('location: edit.php');
-		}
-
+	$log = isloggedin();
+	if($log == 0){
+		header('location: index.php');
 	}
 ?>
 <html>

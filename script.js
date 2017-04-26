@@ -1,11 +1,17 @@
 $(document).ready(function(){
 	$('#inputData').val('');
 
+	$('#change-password-tab').css('border-bottom', 'none');
+	$('.account-tab:last').css('border-right', 'none');
+	$('.account-tab:first').css('border-left', 'none');
+
 	$('#side-bar > .account-side-bar-item > .account-delete').on('click', function(){
-		console.log($(this).parent().find('#account-user').text());	
+		/* console.log($(this).parent().find('#account-user').text()); */	
+
 		var contents = {
 			'username': $(this).parent().find('#account-user').text()
 		}
+
 		$element = $(this);
 		$.ajax({
 			url: 'update-user.php',
@@ -26,7 +32,8 @@ $(document).ready(function(){
 				var contents = {
 					'username': $('#side-bar > .account-side-bar-item > .selected').text(),
 					'password': $('#change-password-current').val(),
-					'new-password': $('#change-password-new').val()
+					'new-password': $('#change-password-new').val(),
+					'new-password-retyped': $('#change-password-new-retyped').val()
 				}
 
 				$.ajax({
@@ -36,9 +43,17 @@ $(document).ready(function(){
 					data: contents,
 					success: function(data){
 						console.log("Password Changed");
+						$('#success').css('display', 'initial');
+						$('#success').fadeOut(5000, function(){
+							$('#success').css('display', 'none');
+						});
 					},
 					error: function(data){
 						console.log("Error Changing Passwored");
+						$('#failure').css('display', 'initial');
+						$('#failure').fadeOut(5000, function(){
+							$('#failure').css('display', 'none');
+						});
 					}
 				})
 			}
@@ -70,20 +85,15 @@ $(document).ready(function(){
 		$('#side-bar > .account-side-bar-item > .side-bar-item').removeClass('selected');
 		$(this).addClass('selected');
 	});
+
 	$('.account-tab').on('click', function(){
 		$('.account-tab').css('border-bottom', '2px solid black');
-		$('.account-tab').css('border-left', '2px solid black');
-		$('.account-tab').css('border-right', '2px solid black');
 		$(this).css('border-bottom', 'none');
 
 		if($(this).text() == 'Change Password'){
-			$(this).css('border-right', 'none');
-			$(this).css('border-left', 'none');
 			$('.account-tab-section').css('display', 'none');
 			$('#change-password').css('display', 'flex');
 		}else if($(this).text() == 'Add User'){
-			$(this).css('border-right', 'none');
-			$(this).css('border-left', 'none');
 			$('.account-tab-section').css('display', 'none');
 			$('#add-user').css('display', 'flex');
 		}
