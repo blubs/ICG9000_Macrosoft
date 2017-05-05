@@ -1,11 +1,13 @@
 $(document).ready(function(){
 	$('#inputData').val('');
 
-	$('#change-password-tab').css('border-bottom', 'none');
-	$('.account-tab:last').css('border-right', 'none');
-	$('.account-tab:first').css('border-left', 'none');
+	/* $('#change-password-tab').css('border-bottom', 'none'); */
+	/* $('.account-tab:last').css('border-right', 'none'); */
+	/* $('.account-tab:first').css('border-left', 'none'); */
+	$('.account-tab:not("#change-password-tab")').addClass('not-active');
+	$('.account-tab:not("#change-password-tab")').css('border-bottom', '2px solid black');
 
-	$('#side-bar > .account-side-bar-item > .account-delete').on('click', function(){
+	$('body').on('click','#side-bar > .account-side-bar-item > .account-delete', function(){
 		/* console.log($(this).parent().find('#account-user').text()); */	
 
 		var contents = {
@@ -29,27 +31,31 @@ $(document).ready(function(){
 
 	$('#user-change-password').on('click', function(){
 			if($('#change-password-new').val() == $('#change-password-new-retyped').val()){
+
 				var contents = {
 					'username': $('#side-bar > .account-side-bar-item > .selected').text(),
-					'password': $('#change-password-current').val(),
-					'new-password': $('#change-password-new').val(),
-					'new-password-retyped': $('#change-password-new-retyped').val()
+					'password': $('#change-password-new').val(),
 				}
 
 				$.ajax({
-					url: 'update-user.php',
+					url: 'update-user-change-password.php',
 					type: 'post',
 					dataType: 'json',
 					data: contents,
 					success: function(data){
-						console.log("Password Changed");
-						$('#success').css('display', 'initial');
-						$('#success').fadeOut(5000, function(){
-							$('#success').css('display', 'none');
-						});
+						if(data.hasOwnProperty('error')){
+							$('#failure').text(data.error);
+							$('#failure').css('display', 'initial');
+						}else{
+							$('#failure').css('display', 'none');
+							$('#success').css('display', 'initial');
+							$('#success').fadeOut(5000, function(){
+								$('#success').css('display', 'none');
+							});
+						}
 					},
 					error: function(data){
-						console.log("Error Changing Passwored");
+						$('#failure').text('ERROR');
 						$('#failure').css('display', 'initial');
 						$('#failure').fadeOut(5000, function(){
 							$('#failure').css('display', 'none');
@@ -59,7 +65,7 @@ $(document).ready(function(){
 			}
 	});
 
-	$('#create-user-button').on('click',function(){
+	$('#create-user-button').on('click', function(){
 			if($('#user-password').val() == $('#user-retyped-password').val()){
 				var contents = {
 					'username':$('#user-username').val(),
@@ -67,28 +73,48 @@ $(document).ready(function(){
 				}
 
 				$.ajax({
-					url: 'update-user.php',
+					url: 'update-user-add-user.php',
 					type: 'post',
 					dataType: 'json',
 					data: contents,
-					success: function(){
-						console.log("user created");
+					success: function(data){
+						if(data.hasOwnProperty('error')){
+							$('#failure').text(data.error);
+							$('#failure').css('display', 'initial');
+						}else{
+							$('#failure').css('display', 'none');
+							$('#success').css('display', 'initial');
+							$('#success').fadeOut(5000, function(){
+								$('#success').css('display', 'none');
+							});
+							$user = "<div class='account-side-bar-item'>";
+							$user += "<div id='account-user' class='side-bar-item'>" + $('#user-username').val() + "</div>";
+							$user += "<div class='account-delete'>X</div>";
+							$user += "</div>";
+							$('#side-bar').append($user);
+						}
 					},
 					error: function(){
-						console.log("Error creating user");
+						$('#failure').text('ERROR');
+						$('#failure').css('display', 'initial');
+						$('#failure').fadeOut(5000, function(){
+							$('#failure').css('display', 'none');
+						});
 					}
 				});
 			}
 	});
 
-	$('#side-bar > .account-side-bar-item > .side-bar-item').on('click', function(){
+	$('body').on('click','#side-bar > .account-side-bar-item > .side-bar-item', function(){
 		$('#side-bar > .account-side-bar-item > .side-bar-item').removeClass('selected');
 		$(this).addClass('selected');
 	});
 
 	$('.account-tab').on('click', function(){
 		$('.account-tab').css('border-bottom', '2px solid black');
+		$('.account-tab').addClass('not-active');
 		$(this).css('border-bottom', 'none');
+		$(this).removeClass('not-active');
 
 		if($(this).text() == 'Change Password'){
 			$('.account-tab-section').css('display', 'none');

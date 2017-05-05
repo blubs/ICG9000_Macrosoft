@@ -53,7 +53,6 @@
 						<div id='add-user-tab' class='account-tab'>Add User</div>
 					</div>
 					<div id='change-password' class='account-tab-section'>
-						<input id='change-password-current' class='edit-input' type='password' placeholder='Current Password'>
 						<input id='change-password-new' class='edit-input' type='password' placeholder='New Password'>
 						<input id='change-password-new-retyped' class='edit-input' type='password' placeholder='Retype New Password'>
 						<input id='user-change-password' class='edit-input edit-input-button' type='button' value='Change Password'>
