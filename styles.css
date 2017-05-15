@@ -5,28 +5,29 @@
 	/* border: 1px solid black; */
 }
 body {
-	background-color: #ccb185;
+	background-color: #eeeeee;
 	font-size: 24px;
+	font-family: arial, sans-serif;
 }
 /* @page { */
 /* 	margin: 0; */
 /* } */
 .pickit-list::-webkit-scrollbar{
-	background-color: #cc6600;
+	background-color: #ffffff;
 }
 #side-bar::-webkit-scrollbar {
-	background-color: #cc6600;
+	background-color: #ffffff;
 }
 ::-webkit-scrollbar-button {
 }
 .pickit-list::-webkit-scrollbar-thumb {
-	background-color: #ffa64d;
-	border-left: 2px solid #cc6600;
+	background-color: #ffffff;
+	border-left: 2px solid #eeeeee;
 }
 #side-bar::-webkit-scrollbar-thumb {
-	background-color: #ffa64d;
-	border-left: 2px solid #cc6600;
-	border-right: 2px solid #cc6600;
+	background-color: #ffffff;
+	border-left: 2px solid #eeeeee;
+	border-right: 2px solid #eeeeee;
 }
 ::-webkit-scrollbar-track {
 }
@@ -47,18 +48,29 @@ body {
 	display: flex;
 	flex-direction: row;
 	width: 100%;
-	background-color: green;
+	background-color: #2970e7;
+	height: 10%;
 	/* border: 1px solid black; */
 }
 .menu-bar-item {
-	padding: 5px 10px 15px 10px;
+	/*padding: 1vw 2vw 2vw 2vw;*/
+	padding: 30% 1.5vw 0vw 1.5vw;
+	height: 100%;
+	/*border: none solid none solid;*/
+	border-right: solid;
+	border-left: solid;
+	border-color: #5089e6;
+	/*Offset the buttons so that the borders overlap (and aren't twice as thick)*/
+	margin-left: -3px;
+	text-align: center center;
+	vertical-align: middle;
 }
 .menu-bar-item:hover {
-	background-color: #00e600;
+	background-color: #6099f6;
 	/* border: 2px solid #1ca117; */
 }
 .menu-bar-item > a{
-	font-size: 30px;
+	font-size: 1.5vw;
 	text-decoration: none;
 	color: white;
 }
@@ -70,7 +82,7 @@ body {
 #body-container {
 	display: flex;
 	flex-direction: row;
-	height: 100%;
+	height: 90%;/*100%*/
 	width: 100%;
 }
 #side-bar {
@@ -79,12 +91,16 @@ body {
 	width: 300px;
 	height: 100%;
 	overflow: auto;
-	background-color: gold;
+	background-color: #555555;
 }
 .side-bar-item {
-	border: 2px solid transparent;
+	border: transparent;
+	border-bottom: solid;
+	border-width: 1px;
+	background-color: #eeeeee;
 	padding: 0 4px;
 	width: 100%;
+	padding-left: 1vw;
 }
 #input-field-container {
 	display: flex;
@@ -101,18 +117,21 @@ body {
 	outline: none;
 }
 #update-button {
-	background-color: #cc6600;
+	background-color: #ffffff;
+
 	font-weight: bold;
 	border-radius: 8px;
 	border: none;
+	border: 1px solid;
+	border-color: #bbbbbb;
 }
 #update-button:hover {
-	background-color: gold;
+	background-color: #555555;
 }
 #center-container {
 	display: flex;
 	flex-direction: column;
-	height: 100%;
+	height: 90%;
 	width: 100%;
 	justify-content: center;
 	align-items: center;
@@ -121,16 +140,17 @@ body {
 	padding: 10px;
 	margin: 15px;
 	width: 500px;
-	color: white;
+	color: #000000;
 	font-size: 30px;
 	font-weight: bold;
 	border-radius: 5px;
 	/* background-color: #428bd0; */
-	background-color: #cc6600;
-	border: 1px solid transparent;
+	background-color: #ffffff;
+	border: 1px solid;
+	border-color: #bbbbbb;
 }
 .main-menu-item:hover {
-	background-color: gold;
+	background-color: #888888;
 }
 .main-menu-item:focus {
 	outline: none;
@@ -152,7 +172,7 @@ body {
 	display: flex;
 	flex-direction: row;
 	width: 100%;
-	height: 100%;
+	height: 90%;
 	justify-content: center;
 	padding: 0 10px;
 	margin: 10px 0;
@@ -161,18 +181,26 @@ body {
 	display: flex;
 	flex-direction: column;
 	width: 30%;
+
+	border-radius: 8px;
+	border-width: 1px;
+	border-color: #000000;
+
 }
 .pickit-list {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
 	overflow: auto;
-	border: 5px solid #cc6600;
+	border: 5px solid #ffffff;
 	height: 100%;
 }
 .pickit-list-item {
-	background-color: gold;
-	border: 2px solid transparent;
+	background-color: #555555;
+	border-bottom: solid;
+	border-width: 1px;
+	border-color: #222222;
+	padding-left: 1vw;
 }
 #pickit-list-button-container {
 	display: flex;
@@ -184,40 +212,49 @@ body {
 .pickit-list-button {
 	padding: 10px;
 	margin: 10px;
+	width: 6vw;
+
 	border-radius: 8px;
-	background-color: #cc6600;
+	border: 1px solid;
+	border-color: #bbbbbb;
+	background-color: #ffffff;
+	
+	/*font-weight: bold;
+	font-size: 40px;*/
 }
 .pickit-list-form-button {
 	width: 100%;
 	border: 0px;
 	background-color: inherit;
-	font-size: 24px;
+	font-size: 1vw;
+	font-weight: bold;
 }
 .pickit-list-form-button:focus {
 	outline: none;
 }
 .pickit-list-button:hover {
-	background-color: gold;	
+	background-color: #555555;	
 }
 .pickit-list-title {
 	font-size: 24px;
 	padding: 10px;
 	text-align: center;
-	background-color: #cc6600;
+	background-color: #ffffff;
 }
 .missing-info {
-	background-color: #ffa64d;
+	background-color: #994444;
 }
 .selected {
-	background-color: #bcdd55 !important;
-	border: 2px solid #1ca117;
+	background-color: #6099f6 !important;
+	border: 2px solid #6099f6;
+	
 }
 #card-center-container {
 	display: flex;
 	flex-direction: column;
 	/* justify-content: center; */
 	text-align: center;
-	border: 5px solid black;
+	border: 5px solid #444444;
 	margin: 0 0 10px 0;
 	padding-top: 0.1in;
 	background-color: white;
@@ -270,11 +307,17 @@ body {
 	width: 100%;
 }
 .account-side-bar-item > .side-bar-item {
-	background-color: #ffa64d;
+	background-color: #ffffff;
+	padding-left: 1vw;
 }
 .account-delete {
-	background-color: #ff704d; 
-	border: 2px solid #ff3300;
+	background-color: #ffffff;
+	border-bottom: solid;
+	border-color: #000000;
+	border-width: 1px;
+	padding-right: 0.5vw;
+	color: #ff0000;
+	/*border: 2px solid #ff3300;*/
 	cursor: pointer;
 }
 .account-tab-container {
@@ -284,7 +327,14 @@ body {
 .account-tab {
 	width: 50%;
 	text-align: center;
-	padding: 8px 8px 16px 8px;
+	padding: 16px 8px 16px 8px;
+	box-shadow: inset 0px 0px 20px 0px #444444;
+	background-color: #6099f6;
+	border-width: 1px;
+	border-radius: 8px;
+	border: solid;
+	border-right: none;
+	border-color: #bbbbbb;
 	/* border-right: 2px solid black; */
 	/* border-bottom: 2px solid black; */
 }
@@ -297,10 +347,14 @@ body {
 	display: none;
 }
 .edit-input-button {
-	background-color: #cc6600;
+	background-color: #ffffff;
 	font-weight: bold;
 	border-radius: 8px;
-	border: none;
+	border: 1px solid;
+	border-color: #bbbbbb;
+}
+.edit-input-button:hover {
+	background-color: #555555;
 }
 #ajax-visual {
 	display: flex;
@@ -309,5 +363,6 @@ body {
 	height: 20%;	
 }
 .not-active {
-	box-shadow: inset 0px 0px 20px 0px black;
+	box-shadow: none;
+	background-color: #ffffff;
 }

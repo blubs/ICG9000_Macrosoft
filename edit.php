@@ -16,9 +16,7 @@
 	</head>
 	<body>	
 		<div id='container'>
-			<div id='menu-bar'>
 				<?php require 'menu-bar.php' ?>
-			</div>
 			<div id='body-container'>
 				<div id='side-bar'>
 					<?php 

@@ -1,11 +1,7 @@
 $(document).ready(function(){
 	$('#inputData').val('');
 
-	/* $('#change-password-tab').css('border-bottom', 'none'); */
-	/* $('.account-tab:last').css('border-right', 'none'); */
-	/* $('.account-tab:first').css('border-left', 'none'); */
 	$('.account-tab:not("#change-password-tab")').addClass('not-active');
-	$('.account-tab:not("#change-password-tab")').css('border-bottom', '2px solid black');
 
 	$('body').on('click','#side-bar > .account-side-bar-item > .account-delete', function(){
 		/* console.log($(this).parent().find('#account-user').text()); */	
@@ -111,9 +107,7 @@ $(document).ready(function(){
 	});
 
 	$('.account-tab').on('click', function(){
-		$('.account-tab').css('border-bottom', '2px solid black');
 		$('.account-tab').addClass('not-active');
-		$(this).css('border-bottom', 'none');
 		$(this).removeClass('not-active');
 
 		if($(this).text() == 'Change Password'){
