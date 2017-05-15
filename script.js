@@ -85,7 +85,7 @@ $(document).ready(function(){
 							});
 							$user = "<div class='account-side-bar-item'>";
 							$user += "<div id='account-user' class='side-bar-item'>" + $('#user-username').val() + "</div>";
-							$user += "<div class='account-delete'>X</div>";
+							$user += "<div class='account-delete'>&times;</div>";
 							$user += "</div>";
 							$('#side-bar').append($user);
 						}

@@ -41,7 +41,7 @@
 							}
 							echo "<div class='account-side-bar-item'>";
 							echo "<div id='account-user' class='side-bar-item'>".$row['username']."</div>";
-							echo "<div class='account-delete'>X</div>";
+							echo "<div class='account-delete'>&times;</div>";
 							echo "</div>";
 						}
 					?>

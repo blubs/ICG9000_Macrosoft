@@ -9,6 +9,9 @@ body {
 	font-size: 24px;
 	font-family: arial, sans-serif;
 }
+a {
+	text-decoration: none;
+}
 /* @page { */
 /* 	margin: 0; */
 /* } */
@@ -27,8 +30,6 @@ body {
 #side-bar::-webkit-scrollbar-thumb {
 	background-color: #eeeeee;
 	border: 2px solid #cccccc;
-	/*border-left: 2px solid #cccccc;
-	border-right: 2px solid #cccccc;*/
 }
 ::-webkit-scrollbar-track {
 	background-color: #555555;
@@ -36,7 +37,10 @@ body {
 ::-webkit-scrollbar-track-piece {
 }
 ::-webkit-scrollbar-corner {
-	background-color: #555555;
+	background-color: #000000;
+}
+-webkit-scrollbar:hover {
+	cursor: pointer;
 }
 .main-menu-item::-webkit-input-placeholder {
 	color: white;
@@ -67,9 +71,11 @@ body {
 	margin-left: -3px;
 	text-align: center center;
 	vertical-align: middle;
+	color: white;
 }
 .menu-bar-item:hover {
 	background-color: #6099f6;
+	cursor:pointer;
 	/* border: 2px solid #1ca117; */
 }
 .menu-bar-item > a{
@@ -105,6 +111,10 @@ body {
 	width: 100%;
 	padding-left: 1vw;
 }
+.side-bar-item:hover {
+	cursor:pointer;
+	background-color: #bbbbbb;
+}
 #input-field-container {
 	display: flex;
 	flex-direction: column;
@@ -130,6 +140,7 @@ body {
 }
 #update-button:hover {
 	background-color: #555555;
+	cursor:pointer;
 }
 #center-container {
 	display: flex;
@@ -158,6 +169,7 @@ body {
 }
 .main-menu-item:hover {
 	background-color: #888888;
+	cursor:pointer;
 }
 .main-menu-item:focus {
 	outline: none;
@@ -174,6 +186,7 @@ body {
 }
 #login-button:hover {
 	background-color: #00e600;
+	cursor:pointer;
 }
 #pickit-list-container {
 	display: flex;
@@ -201,14 +214,19 @@ body {
 	overflow: auto;
 	border: 5px solid #ffffff;
 	height: 100%;
+	background-color: #555555;
 }
 .pickit-list-item {
-	background-color: #555555;
+	background-color: #bbbbbb;
 	border-bottom: solid;
 	border-width: 1px;
 	border-color: #222222;
 	padding-left: 1vw;
 }
+.pickit-list-item:hover {
+	cursor: pointer;
+}
+
 #pickit-list-button-container {
 	display: flex;
 	flex-direction: column;
@@ -217,29 +235,27 @@ body {
 	height: 100%;
 }
 .pickit-list-button {
-	padding: 10px;
+	width: 8vw;
 	margin: 10px;
-	width: 6vw;
-
-	border-radius: 8px;
-	border: 1px solid;
-	border-color: #bbbbbb;
-	background-color: #ffffff;
 	
 	/*font-weight: bold;
 	font-size: 40px;*/
 }
 .pickit-list-form-button {
+	
+	border-radius: 8px;
+	border: 1px solid;
+	border-color: #bbbbbb;
+	background-color: #ffffff;
+	padding: 10px;
+
 	width: 100%;
-	border: 0px;
-	background-color: inherit;
 	font-size: 1vw;
 	font-weight: bold;
 }
-.pickit-list-form-button:focus {
+.pickit-list-form-button:hover {
 	outline: none;
-}
-.pickit-list-button:hover {
+	cursor: pointer;
 	background-color: #555555;	
 }
 .pickit-list-title {
@@ -312,20 +328,31 @@ body {
 	display: flex;
 	flex-direction: row;
 	width: 100%;
+	background-color: #ffffff;
 }
 .account-side-bar-item > .side-bar-item {
-	background-color: #ffffff;
 	padding-left: 1vw;
+	background: transparent;
+}
+.account-side-bar-item:hover {
+	cursor: pointer;
+	background-color: #bbbbbb;
 }
 .account-delete {
-	background-color: #ffffff;
 	border-bottom: solid;
+	background: transparent;
 	border-color: #000000;
 	border-width: 1px;
 	padding-right: 0.5vw;
+	padding-left: 0.4vw;
 	color: #ff0000;
 	/*border: 2px solid #ff3300;*/
 	cursor: pointer;
+}
+.account-delete:hover {
+	color: #ffffff;
+	background: solid;
+	background-color: #ff0000;
 }
 .account-tab-container {
 	display: flex;
@@ -345,6 +372,7 @@ body {
 	/* border-right: 2px solid black; */
 	/* border-bottom: 2px solid black; */
 }
+
 .account-tab-section {
 	display: flex;
 	flex-direction: column;
@@ -362,6 +390,7 @@ body {
 }
 .edit-input-button:hover {
 	background-color: #555555;
+	cursor:pointer;
 }
 #ajax-visual {
 	display: flex;
@@ -372,4 +401,8 @@ body {
 .not-active {
 	box-shadow: none;
 	background-color: #ffffff;
+}
+.not-active:hover {
+	cursor:pointer;
+	background-color: #555555;
 }
