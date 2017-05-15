@@ -58,6 +58,12 @@ $(document).ready(function(){
 						});
 					}
 				})
+			}else{
+				$('#failure').text("Passwords do not match");
+				$('#failure').css('display', 'initial');
+				$('#failure').fadeOut(5000, function(){
+					$('#failure').css('display', 'none');
+				});
 			}
 	});
 
@@ -97,6 +103,12 @@ $(document).ready(function(){
 							$('#failure').css('display', 'none');
 						});
 					}
+				});
+			}else{
+				$('#failure').text("Passwords do not match");
+				$('#failure').css('display', 'initial');
+				$('#failure').fadeOut(5000, function(){
+					$('#failure').css('display', 'none');
 				});
 			}
 	});

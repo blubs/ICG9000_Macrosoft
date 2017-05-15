@@ -103,13 +103,11 @@ a {
 	background-color: #555555;
 }
 .side-bar-item {
-	border: transparent;
-	border-bottom: solid;
-	border-width: 1px;
 	background-color: #eeeeee;
 	padding: 0 4px;
 	width: 100%;
 	padding-left: 1vw;
+	border-bottom: 1px solid black;
 }
 .side-bar-item:hover {
 	cursor:pointer;
@@ -269,8 +267,6 @@ a {
 }
 .selected {
 	background-color: #6099f6 !important;
-	border: 2px solid #6099f6;
-	
 }
 #card-center-container {
 	display: flex;
@@ -339,15 +335,12 @@ a {
 	background-color: #bbbbbb;
 }
 .account-delete {
-	border-bottom: solid;
 	background: transparent;
-	border-color: #000000;
-	border-width: 1px;
 	padding-right: 0.5vw;
 	padding-left: 0.4vw;
 	color: #ff0000;
-	/*border: 2px solid #ff3300;*/
 	cursor: pointer;
+	border-bottom: 1px solid black;
 }
 .account-delete:hover {
 	color: #ffffff;
